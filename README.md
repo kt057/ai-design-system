@@ -109,7 +109,7 @@ To add a new component, see [`rules/02-component-conventions.md`](./rules/02-com
 ## Roadmap
 
 - [ ] **Publish to the npm registry** — the first publish of this scoped package currently fails with `E404 Not Found - PUT` (same pattern as [npm/cli#8678](https://github.com/npm/cli/issues/8678) / [#8976](https://github.com/npm/cli/issues/8976)) and is under investigation.
-- [ ] **CI-driven release via GitHub Actions** — `.github/workflows/release.yml` is wired up but fails on every push to `main` for the same reason. It will be re-enabled once npm publishing works.
+- [ ] **CI-driven release via GitHub Actions** — `.github/workflows/release.yml` is paused (trigger switched to `workflow_dispatch` only) until npm publishing works. Restore the `on: push: branches: [main]` trigger to re-enable automatic releases.
 - [ ] **Replace the Installation section** — once the package is on npm, swap the tarball workflow back out for plain `pnpm add @kt057/ai-design-system`.
 
 ## License

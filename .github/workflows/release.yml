@@ -1,8 +1,10 @@
 name: Release
 
+# Release is paused while npm publishing is blocked (see README "Roadmap").
+# Trigger manually via the Actions tab once publishing is unblocked, then
+# restore `on: push: branches: [main]` to re-enable automatic releases.
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 concurrency:
   group: release-${{ github.ref }}
