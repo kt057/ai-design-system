@@ -98,3 +98,55 @@
     outline: none;
   }
 }
+
+/*
+ * Enter / exit animation utilities used by overlays (Modal, Tooltip, Select
+ * popover, …). They mirror the API of `tailwindcss-animate` but are inlined
+ * here so the design system stays plugin-free. Compose `animate-in` with one
+ * or more state utilities (`fade-in`, `zoom-in-95`) — same for `animate-out`.
+ */
+@utility animate-in {
+  animation-duration: var(--duration-base);
+  animation-timing-function: var(--ease-standard);
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  animation-name: rac-enter;
+}
+
+@utility animate-out {
+  animation-duration: var(--duration-fast);
+  animation-timing-function: var(--ease-standard);
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  animation-name: rac-exit;
+}
+
+@utility fade-in {
+  --tw-enter-opacity: 0;
+}
+
+@utility fade-out {
+  --tw-exit-opacity: 0;
+}
+
+@utility zoom-in-95 {
+  --tw-enter-scale: 0.95;
+}
+
+@utility zoom-out-95 {
+  --tw-exit-scale: 0.95;
+}
+
+@keyframes rac-enter {
+  from {
+    opacity: var(--tw-enter-opacity, 1);
+    transform: scale(var(--tw-enter-scale, 1));
+  }
+}
+
+@keyframes rac-exit {
+  to {
+    opacity: var(--tw-exit-opacity, 1);
+    transform: scale(var(--tw-exit-scale, 1));
+  }
+}
