@@ -1,52 +1,52 @@
 # `@kt057/ai-design-system`
 
-> AI-friendly React design system built on **React Aria Components** and **Tailwind CSS v4**.
+> **React Aria Components** と **Tailwind CSS v4** で構築された、AI フレンドリーな React デザインシステム。
 
-The design system is small on purpose. Every component ships with:
+このデザインシステムは意図的に小さく保たれています。すべてのコンポーネントには次の特徴があります。
 
-- **Accessibility from `react-aria-components`** — keyboard, focus, and screen-reader behavior come from a battle-tested library.
-- **Token-based theming** — override CSS custom properties to rebrand. No `<ThemeProvider>` required.
-- **AI-readable docs** — a generated [`components.json`](./components.json) manifest plus per-component [`rules/`](./rules/) so AI agents can use the package correctly in any consumer project.
+- **`react-aria-components` によるアクセシビリティ** — キーボード操作、フォーカス管理、スクリーンリーダー対応は実績のあるライブラリに任せています。
+- **トークンベースのテーマ** — CSS カスタムプロパティを上書きするだけでブランディングを変更できます。`<ThemeProvider>` は不要です。
+- **AI が読めるドキュメント** — 自動生成される [`components.json`](./components.json) マニフェストとコンポーネントごとの [`rules/`](./rules/) により、AI エージェントが任意のプロジェクトで本パッケージを正しく利用できます。
 
 ---
 
-## Installation
+## インストール
 
-> **Note**: This package is not yet on the npm registry, so `npm install @kt057/ai-design-system` does not work yet. To try it out, build a tarball from this repo and install that directly. This section will be replaced once npm publishing is unblocked — see [Roadmap](#roadmap).
+> **注意**: 本パッケージはまだ npm レジストリに公開されていないため、`npm install @kt057/ai-design-system` は現時点では動作しません。試したい場合は、このリポジトリから tarball をビルドして直接インストールしてください。npm への公開が可能になり次第、このセクションは差し替えられます。詳細は [ロードマップ](#ロードマップ) を参照してください。
 
-### 1. Build a tarball (in this repo)
+### 1. tarball をビルドする（本リポジトリで）
 
 ```bash
 pnpm install
 pnpm pack
-# → kt057-ai-design-system-<version>.tgz is created at the repo root
+# → kt057-ai-design-system-<version>.tgz がリポジトリのルートに生成されます
 ```
 
-The `prepack` hook runs `pnpm run build` (library + CSS + manifest) automatically, so `pnpm pack` alone produces a fully-built tarball.
+`prepack` フックが自動的に `pnpm run build`（ライブラリ + CSS + マニフェスト）を実行するため、`pnpm pack` だけで完全にビルド済みの tarball が生成されます。
 
-### 2. Install in the consuming project
+### 2. 利用側プロジェクトにインストールする
 
 ```bash
 pnpm add /absolute/path/to/kt057-ai-design-system-<version>.tgz
-# example:
+# 例:
 # pnpm add /Users/you/works/ai-design-system/kt057-ai-design-system-0.2.0.tgz
 ```
 
-This is an absolute-path install, so to use the same tarball on another machine you'll need to copy the `.tgz` file over.
+絶対パスでインストールするため、別のマシンで同じ tarball を使うには `.tgz` ファイルをコピーする必要があります。
 
-### 3. Load the stylesheet
+### 3. スタイルシートを読み込む
 
-Once, at the entry point of your app:
+アプリのエントリーポイントで一度だけ読み込みます。
 
 ```ts
 import "@kt057/ai-design-system/styles.css";
 ```
 
-This is **self-contained** — it ships pre-compiled with the design tokens and every Tailwind utility class our components actually use. You do **not** need to install or configure Tailwind in your consumer project to render our components correctly. (If you happen to use Tailwind v4 yourself, you can also reference our tokens like `bg-brand-500` from your own code by re-declaring `@theme` in your CSS — see [Theming](#theming).)
+このスタイルシートは **自己完結型** で、デザイントークンと、各コンポーネントが実際に使用するすべての Tailwind ユーティリティクラスを含んでコンパイル済みの状態で出荷されます。コンポーネントを正しくレンダリングするために、利用側プロジェクトで Tailwind をインストール・設定する必要は **ありません**。（自分でも Tailwind v4 を使っている場合は、CSS で `@theme` を再宣言すれば、`bg-brand-500` のように本パッケージのトークンを自分のコードから参照することもできます。詳しくは [テーマ](#テーマ) を参照してください。）
 
-Works seamlessly in Next.js App Router: every component is shipped as a React Client Component (`"use client"` is preserved at the top of the bundle), so you can `import { Button }` directly from a Server Component.
+Next.js App Router でもシームレスに動作します。すべてのコンポーネントは React Client Component として出荷され（バンドル先頭の `"use client"` が保持されます）、Server Component から `import { Button }` のように直接インポートできます。
 
-## Usage
+## 使い方
 
 ```tsx
 import { Button } from "@kt057/ai-design-system";
@@ -60,11 +60,11 @@ export function SaveBar() {
 }
 ```
 
-See the per-component rule files in [`rules/components/`](./rules/components/) for the full prop contract, examples, and accessibility notes.
+完全な props の仕様、サンプル、アクセシビリティに関する注意点は、[`rules/components/`](./rules/components/) のコンポーネントごとのルールファイルを参照してください。
 
-## Theming
+## テーマ
 
-Override any token after importing the stylesheet:
+スタイルシートをインポートした後、任意のトークンを上書きできます。
 
 ```css
 @import "@kt057/ai-design-system/styles.css";
@@ -76,42 +76,42 @@ Override any token after importing the stylesheet:
 }
 ```
 
-The full token inventory is documented in [`rules/01-design-tokens.md`](./rules/01-design-tokens.md).
+トークンの完全な一覧は [`rules/01-design-tokens.md`](./rules/01-design-tokens.md) に記載されています。
 
-## For AI agents
+## AI エージェント向け
 
-This package is designed to be consumed by AI coding assistants. After install, the agent can read:
+本パッケージは AI コーディングアシスタントから利用されることを想定して設計されています。インストール後、エージェントは次のファイルを読み取れます。
 
-- `node_modules/@kt057/ai-design-system/components.json` — machine-readable component manifest (props, variants, examples, source paths).
-- `node_modules/@kt057/ai-design-system/rules/` — markdown specifications for every component plus global conventions.
+- `node_modules/@kt057/ai-design-system/components.json` — 機械可読なコンポーネントマニフェスト（props、バリアント、サンプル、ソースパス）。
+- `node_modules/@kt057/ai-design-system/rules/` — コンポーネントごとの仕様と全体の規約を記述した Markdown ファイル群。
 
-The recommended prompt is: _"Use components from `@kt057/ai-design-system`. Before writing code, read its `rules/00-overview.md` and `rules/components/<Name>.md` for any component you plan to use."_
+推奨されるプロンプトは次のとおりです: _「`@kt057/ai-design-system` のコンポーネントを使ってください。コードを書く前に、`rules/00-overview.md` と、利用予定のコンポーネントの `rules/components/<Name>.md` を必ず読んでください。」_
 
-## Contributing
+## コントリビュート
 
-This repo is managed primarily through Claude Code. The conventions live in [`rules/`](./rules/) and the AI orchestration files live in [`.claude/`](./.claude/).
+本リポジトリは主に Claude Code を通じて管理されています。規約は [`rules/`](./rules/) に、AI のオーケストレーション関連ファイルは [`.claude/`](./.claude/) にあります。
 
-Quick reference:
+クイックリファレンス:
 
 ```bash
-pnpm install              # install
-pnpm dev                  # start Storybook on http://localhost:6006
-pnpm test                 # vitest (unit + storybook browser mode)
+pnpm install              # 依存関係のインストール
+pnpm dev                  # http://localhost:6006 で Storybook を起動
+pnpm test                 # vitest（ユニット + Storybook ブラウザモード）
 pnpm lint                 # eslint
 pnpm format               # prettier
 pnpm typecheck            # tsc --noEmit
-pnpm build                # build dist + regenerate components.json
-pnpm changeset            # record a release note
+pnpm build                # dist のビルド + components.json の再生成
+pnpm changeset            # リリースノートを記録
 ```
 
-To add a new component, see [`rules/02-component-conventions.md`](./rules/02-component-conventions.md). Or, in Claude Code, run `/new-component <Name>`.
+新しいコンポーネントを追加する場合は [`rules/02-component-conventions.md`](./rules/02-component-conventions.md) を参照してください。Claude Code 上では `/new-component <Name>` を実行することもできます。
 
-## Roadmap
+## ロードマップ
 
-- [ ] **Publish to the npm registry** — the first publish of this scoped package currently fails with `E404 Not Found - PUT` (same pattern as [npm/cli#8678](https://github.com/npm/cli/issues/8678) / [#8976](https://github.com/npm/cli/issues/8976)) and is under investigation.
-- [ ] **CI-driven release via GitHub Actions** — `.github/workflows/release.yml` is paused (trigger switched to `workflow_dispatch` only) until npm publishing works. Restore the `on: push: branches: [main]` trigger to re-enable automatic releases.
-- [ ] **Replace the Installation section** — once the package is on npm, swap the tarball workflow back out for plain `pnpm add @kt057/ai-design-system`.
+- [ ] **npm レジストリへの公開** — このスコープ付きパッケージの初回公開が現在 `E404 Not Found - PUT` で失敗しており（[npm/cli#8678](https://github.com/npm/cli/issues/8678) / [#8976](https://github.com/npm/cli/issues/8976) と同じパターン）、調査中です。
+- [ ] **GitHub Actions による CI 駆動リリース** — npm への公開が動作するようになるまで、`.github/workflows/release.yml` は一時停止しています（トリガーを `workflow_dispatch` のみに切り替え済み）。自動リリースを再開するには `on: push: branches: [main]` トリガーを復元してください。
+- [ ] **インストール手順の差し替え** — npm にパッケージが公開され次第、tarball ベースのワークフローを通常の `pnpm add @kt057/ai-design-system` に戻します。
 
-## License
+## ライセンス
 
 [MIT](./LICENSE)

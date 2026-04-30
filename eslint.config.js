@@ -1,11 +1,16 @@
+import { fileURLToPath } from "node:url";
+import path from "node:path";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import storybook from "eslint-plugin-storybook";
+import tailwind from "eslint-plugin-tailwindcss";
 import prettier from "eslint-config-prettier";
 import globals from "globals";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default tseslint.config(
   {
@@ -33,19 +38,26 @@ export default tseslint.config(
         ecmaFeatures: { jsx: true },
       },
     },
-    settings: {
-      react: { version: "detect" },
-    },
     plugins: {
       react,
       "react-hooks": reactHooks,
       "jsx-a11y": jsxA11y,
+      tailwindcss: tailwind,
+    },
+    settings: {
+      react: { version: "detect" },
+      tailwindcss: {
+        config: path.join(__dirname, "src/styles/globals.css"),
+        callees: ["cn", "cva", "cx", "clsx", "twMerge"],
+      },
     },
     rules: {
       ...react.configs.recommended.rules,
       ...react.configs["jsx-runtime"].rules,
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.configs.recommended.rules,
+      "tailwindcss/no-custom-classname": "error",
+      "tailwindcss/classnames-order": "off",
       "react/prop-types": "off",
       "@typescript-eslint/consistent-type-imports": [
         "error",

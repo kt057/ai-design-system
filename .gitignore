@@ -12,6 +12,7 @@ coverage
 .vite
 *.tsbuildinfo
 *.tgz
+scheduled_tasks.lock
 
 # generated artifacts (regenerated on build)
 src/__generated__
