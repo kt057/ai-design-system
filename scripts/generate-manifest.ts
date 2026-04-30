@@ -4,7 +4,7 @@
  * Output: <repo>/components.json (also shipped in the published tarball).
  *
  * The manifest is the AI-facing mirror of `rules/`. AI agents and tooling can
- * read it from `node_modules/@kichikawa57/ai-design-system/components.json`
+ * read it from `node_modules/@kt057/ai-design-system/components.json`
  * to know which components exist, what props they accept, and where to find
  * the per-component rule file.
  */

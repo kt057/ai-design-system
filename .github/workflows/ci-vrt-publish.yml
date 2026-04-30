@@ -1,0 +1,178 @@
+name: VRT Publish
+
+on:
+  push:
+    branches:
+      - main
+      - "feature/**"
+      - "renovate/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  setup-playwright:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: pnpm/action-setup@v4
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: echo "PLAYWRIGHT_BROWSERS_PATH=${HOME}/pw-browsers" >> "${GITHUB_ENV}"
+
+      - uses: ./.github/actions/setup-playwright
+        with:
+          node-version: 22
+          playwright-browsers-path: ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
+
+  setup:
+    needs: setup-playwright
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        total: [3]
+        index: [1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: pnpm/action-setup@v4
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: echo "PLAYWRIGHT_BROWSERS_PATH=${HOME}/pw-browsers" >> "${GITHUB_ENV}"
+
+      - uses: ./.github/actions/setup-playwright
+        with:
+          node-version: 22
+          playwright-browsers-path: ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
+
+      - name: Test Storybook (shard ${{ matrix.index }}/${{ matrix.total }})
+        run: |
+          pnpm exec vitest --run \
+            --pool=threads \
+            --maxWorkers=$(nproc) \
+            --shard ${{ matrix.index }}/${{ matrix.total }} \
+            --project=storybook \
+            --reporter=dot
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-${{ matrix.index }}
+          path: __screenshots__
+
+  vrt_publish:
+    needs: setup
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch unshallow
+        run: git fetch --prune --unshallow
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.REGION }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: pnpm/action-setup@v4
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: workaround for detached HEAD
+        run: |
+          git checkout ${GITHUB_REF#refs/heads/} || git checkout -b ${GITHUB_REF#refs/heads/} && git pull
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: screenshots-*
+          merge-multiple: false
+          path: artifacts/
+
+      - name: Merge screenshots safely
+        run: |
+          echo "=== Checking artifact structure ==="
+          ls -la artifacts/
+
+          echo "=== Merging screenshots ==="
+          mkdir -p __screenshots__
+          for shard in artifacts/screenshots-*; do
+            if [ -d "$shard" ]; then
+              echo "Merging $shard..."
+              rsync -av "$shard/" __screenshots__/
+            fi
+          done
+
+          sync
+          sleep 2
+
+          total_files=$(find __screenshots__ -name '*.png' | wc -l)
+          echo "Total screenshots: $total_files"
+
+          corrupted=0
+          for png in $(find __screenshots__ -name '*.png' | head -20); do
+            if ! file "$png" | grep -q "PNG image data"; then
+              echo "WARNING: corrupted: $png"
+              corrupted=$((corrupted + 1))
+            fi
+          done
+          if [ $corrupted -gt 0 ]; then
+            echo "ERROR: Found $corrupted corrupted PNG files"
+            exit 1
+          fi
+
+      - name: Publish Reg Suit
+        env:
+          REG_NOTICE_CLIENT_ID: ${{ secrets.REG_NOTICE_CLIENT_ID }}
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
+          CLOUDFRONT_DOMAIN: ${{ secrets.CLOUDFRONT_DOMAIN }}
+          REGION: ${{ secrets.REGION }}
+        run: |
+          rm -rf .reg
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            pnpm exec reg-suit compare
+            pnpm exec reg-suit publish
+          else
+            pnpm reg-suit:run
+          fi

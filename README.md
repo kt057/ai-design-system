@@ -1,4 +1,4 @@
-# `@kichikawa57/ai-design-system`
+# `@kt057/ai-design-system`
 
 > AI-friendly React design system built on **React Aria Components** and **Tailwind CSS v4**.
 
@@ -13,17 +13,17 @@ The design system is small on purpose. Every component ships with:
 ## Installation
 
 ```bash
-npm install @kichikawa57/ai-design-system
+npm install @kt057/ai-design-system
 # or
-pnpm add @kichikawa57/ai-design-system
+pnpm add @kt057/ai-design-system
 # or
-yarn add @kichikawa57/ai-design-system
+yarn add @kt057/ai-design-system
 ```
 
 Then, **once at the root of your app**:
 
 ```ts
-import "@kichikawa57/ai-design-system/styles.css";
+import "@kt057/ai-design-system/styles.css";
 ```
 
 This is **self-contained** — it ships pre-compiled with the design tokens and every Tailwind utility class our components actually use. You do **not** need to install or configure Tailwind in your consumer project to render our components correctly. (If you happen to use Tailwind v4 yourself, you can also reference our tokens like `bg-brand-500` from your own code by re-declaring `@theme` in your CSS — see [Theming](#theming).)
@@ -33,7 +33,7 @@ Works seamlessly in Next.js App Router: every component is shipped as a React Cl
 ## Usage
 
 ```tsx
-import { Button } from "@kichikawa57/ai-design-system";
+import { Button } from "@kt057/ai-design-system";
 
 export function SaveBar() {
   return (
@@ -51,7 +51,7 @@ See the per-component rule files in [`rules/components/`](./rules/components/) f
 Override any token after importing the stylesheet:
 
 ```css
-@import "@kichikawa57/ai-design-system/styles.css";
+@import "@kt057/ai-design-system/styles.css";
 
 :root {
   --color-brand-500: oklch(60% 0.2 30);
@@ -66,10 +66,10 @@ The full token inventory is documented in [`rules/01-design-tokens.md`](./rules/
 
 This package is designed to be consumed by AI coding assistants. After install, the agent can read:
 
-- `node_modules/@kichikawa57/ai-design-system/components.json` — machine-readable component manifest (props, variants, examples, source paths).
-- `node_modules/@kichikawa57/ai-design-system/rules/` — markdown specifications for every component plus global conventions.
+- `node_modules/@kt057/ai-design-system/components.json` — machine-readable component manifest (props, variants, examples, source paths).
+- `node_modules/@kt057/ai-design-system/rules/` — markdown specifications for every component plus global conventions.
 
-The recommended prompt is: _"Use components from `@kichikawa57/ai-design-system`. Before writing code, read its `rules/00-overview.md` and `rules/components/<Name>.md` for any component you plan to use."_
+The recommended prompt is: _"Use components from `@kt057/ai-design-system`. Before writing code, read its `rules/00-overview.md` and `rules/components/<Name>.md` for any component you plan to use."_
 
 ## Contributing
 

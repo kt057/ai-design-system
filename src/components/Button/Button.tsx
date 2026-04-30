@@ -5,31 +5,28 @@ import { cn } from "@/utils/cn";
 
 const buttonStyles = cva(
   [
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap",
-    "rounded-md font-medium select-none",
+    "inline-flex items-center justify-center font-semibold whitespace-nowrap select-none",
     "transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]",
-    "focus-visible:ring-brand-500 outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+    "focus-visible:ring-border-focus outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
     "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
     "data-[pending]:cursor-progress",
   ],
   {
     variants: {
       variant: {
-        primary: ["bg-brand-600 text-fg-onbrand", "hover:bg-brand-700 data-[pressed]:bg-brand-800"],
-        secondary: [
-          "bg-bg-subtle text-fg-default border-border-default border",
-          "hover:bg-bg-muted data-[pressed]:bg-bg-muted",
+        primary: [
+          "bg-brand-primary text-text-inverse",
+          "hover:bg-brand-primary-hover data-[pressed]:bg-brand-primary-hover",
         ],
-        ghost: ["text-fg-default bg-transparent", "hover:bg-bg-subtle data-[pressed]:bg-bg-muted"],
-        danger: [
-          "bg-danger-600 text-fg-onbrand",
-          "hover:bg-danger-500 data-[pressed]:bg-danger-600",
+        secondary: [
+          "bg-bg-default text-text-primary border-border-default border",
+          "hover:border-border-strong data-[pressed]:border-border-strong",
         ],
       },
       size: {
-        sm: "h-8 px-3 text-sm",
-        md: "h-10 px-4 text-sm",
-        lg: "h-12 px-6 text-base",
+        sm: "h-6 gap-1 rounded-sm px-3 py-1 text-xs",
+        md: "h-9 gap-2 rounded-md px-4 py-2 text-base",
+        lg: "text-md h-11 gap-3 rounded-lg px-5 py-3",
       },
       fullWidth: {
         true: "w-full",
@@ -50,7 +47,7 @@ export interface ButtonProps
    * Visual style of the button.
    * @default "primary"
    */
-  variant?: "primary" | "secondary" | "ghost" | "danger";
+  variant?: "primary" | "secondary";
   /**
    * Size of the button (controls height, padding, and font size).
    * @default "md"

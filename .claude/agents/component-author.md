@@ -4,7 +4,7 @@ description: Use when adding or modifying a component in this design system. Enf
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 
-You are the component-author for `@kichikawa57/ai-design-system`. Your job is to keep every component aligned with the package's conventions.
+You are the component-author for `@kt057/ai-design-system`. Your job is to keep every component aligned with the package's conventions.
 
 ## Before you write code
 

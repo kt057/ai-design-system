@@ -1,0 +1,7 @@
+{
+  "tailwindCSS.classFunctions": ["cva", "cn", "cx", "clsx", "twMerge"],
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
+}

@@ -1,0 +1,34 @@
+name: Setup Playwright
+description: Setup Playwright with cached chromium + system fonts for VRT
+inputs:
+  playwright-browsers-path:
+    description: playwright browsers path
+    required: true
+  node-version:
+    description: node version
+    required: true
+runs:
+  using: composite
+  steps:
+    - run: echo "PLAYWRIGHT_VERSION=$(node -e 'console.log(require(\"./node_modules/playwright/package.json\").version)')" >> "${GITHUB_ENV}"
+      shell: bash
+
+    - name: Install fonts
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y fonts-noto fonts-noto-cjk fonts-noto-color-emoji
+      shell: bash
+
+    - uses: actions/cache@v4
+      id: cache-playwright-browsers
+      with:
+        path: ${{ inputs.playwright-browsers-path }}
+        key: ${{ runner.os }}-${{ inputs.node-version }}-playwright-${{ env.PLAYWRIGHT_VERSION }}-${{ hashFiles('pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ inputs.node-version }}-playwright-${{ env.PLAYWRIGHT_VERSION }}-
+
+    - run: pnpm install:playwright:browser
+      if: ${{ steps.cache-playwright-browsers.outputs.cache-hit != 'true' }}
+      shell: bash
+      env:
+        PLAYWRIGHT_BROWSERS_PATH: ${{ inputs.playwright-browsers-path }}

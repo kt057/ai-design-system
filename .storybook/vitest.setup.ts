@@ -1,9 +1,14 @@
-/**
- * Storybook 10.3+ wires `@storybook/addon-vitest` annotations automatically,
- * so this file only needs to exist when consumers want to add custom setup.
- *
- * Keep it minimal — leave it empty unless you actually need test-time setup
- * that's specific to the Storybook browser project (and not the unit project,
- * which has its own setup file at `src/test/setup.ts`).
- */
-export {};
+import { setProjectAnnotations } from "@storybook/react-vite";
+import { screenshot } from "@storycap-testrun/browser";
+import { afterEach } from "vitest";
+import { page } from "vitest/browser";
+import * as projectAnnotations from "./preview";
+
+// Apply Storybook preview decorators / parameters to every browser-mode test.
+setProjectAnnotations([projectAnnotations]);
+
+// After each story renders, capture a PNG via @storycap-testrun/browser.
+// Output path is configured in vitest.config.ts (`storycap.output.file`).
+afterEach(async (context) => {
+  await screenshot(page, context);
+});
