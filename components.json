@@ -3,7 +3,6 @@
   "name": "@kt057/ai-design-system",
   "version": "0.1.0",
   "description": "AI-friendly React design system built on React Aria Components and Tailwind CSS v4. Ships with a machine-readable component manifest and rule docs so AI agents can use it correctly in any consumer project.",
-  "generatedAt": "2026-04-30T06:30:01.347Z",
   "rulesEntry": "rules/README.md",
   "stylesEntry": "dist/styles.css",
   "components": [

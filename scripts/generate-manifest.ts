@@ -324,7 +324,6 @@ function main() {
     name: PKG.name,
     version: PKG.version,
     description: PKG.description,
-    generatedAt: new Date().toISOString(),
     rulesEntry: "rules/README.md",
     stylesEntry: "dist/styles.css",
     components,
