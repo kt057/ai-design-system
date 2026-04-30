@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "AI-friendly React design system built on React Aria Components and Tailwind CSS v4. Ships with a machine-readable component manifest and rule docs so AI agents can use it correctly in any consumer project.",
   "license": "MIT",
-  "author": "kichikawa57 <k.ichikawa057@gmail.com>",
+  "author": "kt057 <k.ichikawa057@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kt057/ai-design-system.git"
