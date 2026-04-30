@@ -10,13 +10,13 @@ const meta = {
     layout: "centered",
   },
   args: {
-    children: "Click me",
+    children: "Button",
     onPress: fn(),
   },
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: ["primary", "secondary", "ghost", "danger"],
+      options: ["primary", "secondary"],
     },
     size: {
       control: { type: "select" },
@@ -36,16 +36,12 @@ export const Secondary: Story = {
   args: { variant: "secondary" },
 };
 
-export const Ghost: Story = {
-  args: { variant: "ghost" },
-};
-
-export const Danger: Story = {
-  args: { variant: "danger" },
-};
-
 export const Small: Story = {
   args: { size: "sm" },
+};
+
+export const Medium: Story = {
+  args: { size: "md" },
 };
 
 export const Large: Story = {
@@ -71,7 +67,7 @@ export const ClickInteraction: Story = {
   args: { variant: "primary" },
   play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement);
-    const button = canvas.getByRole("button", { name: /click me/i });
+    const button = canvas.getByRole("button", { name: /button/i });
     await userEvent.click(button);
     await expect(args.onPress).toHaveBeenCalledOnce();
   },
@@ -81,7 +77,7 @@ export const KeyboardActivation: Story = {
   args: { variant: "primary" },
   play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement);
-    const button = canvas.getByRole("button", { name: /click me/i });
+    const button = canvas.getByRole("button", { name: /button/i });
     button.focus();
     await userEvent.keyboard("{Enter}");
     await expect(args.onPress).toHaveBeenCalled();

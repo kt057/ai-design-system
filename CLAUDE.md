@@ -4,7 +4,7 @@ This file is the entry point Claude (and other AI agents) should read before wor
 
 ## What this repo is
 
-`@kichikawa57/ai-design-system` — a small, AI-friendly React design system. See [`README.md`](./README.md) for the human-facing summary.
+`@kt057/ai-design-system` — a small, AI-friendly React design system. See [`README.md`](./README.md) for the human-facing summary.
 
 ## Specs are in `rules/`, not in code comments
 

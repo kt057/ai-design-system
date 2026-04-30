@@ -55,6 +55,25 @@ export default tseslint.config(
         "error",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
       ],
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector:
+            "CallExpression[callee.type='MemberExpression'][callee.property.name='join'][arguments.0.value=' ']",
+          message:
+            "Use cn() from @/utils/cn instead of Array.join(' ') for class strings — keeps Tailwind IntelliSense and tailwind-merge.",
+        },
+        {
+          selector:
+            "JSXAttribute[name.name='className'] > JSXExpressionContainer > TemplateLiteral[expressions.length>0]",
+          message: "Use cn() instead of template literals with interpolation in className.",
+        },
+        {
+          selector:
+            "JSXAttribute[name.name='className'] > JSXExpressionContainer > BinaryExpression",
+          message: "Use cn() instead of string concatenation in className.",
+        },
+      ],
     },
   },
   {

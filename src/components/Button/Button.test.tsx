@@ -34,19 +34,19 @@ describe("Button", () => {
   });
 
   it("applies the requested variant class", () => {
-    render(<Button variant="danger">Delete</Button>);
-    const button = screen.getByRole("button", { name: "Delete" });
-    expect(button.className).toMatch(/bg-danger-600/);
+    render(<Button variant="primary">Confirm</Button>);
+    const button = screen.getByRole("button", { name: "Confirm" });
+    expect(button.className).toMatch(/bg-brand-primary/);
   });
 
   it("merges a consumer className via tailwind-merge", () => {
     render(
-      <Button variant="primary" className="bg-brand-50">
+      <Button variant="primary" className="bg-bg-subtle">
         Save
       </Button>,
     );
     const button = screen.getByRole("button", { name: "Save" });
-    expect(button.className).toMatch(/bg-brand-50/);
-    expect(button.className).not.toMatch(/bg-brand-600/);
+    expect(button.className).toMatch(/bg-bg-subtle/);
+    expect(button.className).not.toMatch(/bg-brand-primary(?!-)/);
   });
 });

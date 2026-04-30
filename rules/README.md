@@ -1,6 +1,6 @@
 # `rules/` — Specification for AI agents and contributors
 
-This folder is the **single source of truth** for how this design system is meant to be used and extended. It is shipped as part of the npm package, so consumers (including AI coding agents) can read the same rules from `node_modules/@kichikawa57/ai-design-system/rules/`.
+This folder is the **single source of truth** for how this design system is meant to be used and extended. It is shipped as part of the npm package, so consumers (including AI coding agents) can read the same rules from `node_modules/@kt057/ai-design-system/rules/`.
 
 ## How to read this directory
 

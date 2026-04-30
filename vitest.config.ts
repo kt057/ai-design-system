@@ -1,7 +1,9 @@
 import { defineConfig } from "vitest/config";
+import type { PluginOption } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
+import storycap from "@storycap-testrun/browser/vitest-plugin";
 import { playwright } from "@vitest/browser-playwright";
 import path from "node:path";
 
@@ -29,7 +31,14 @@ export default defineConfig({
         plugins: [
           storybookTest({
             configDir: path.resolve(__dirname, ".storybook"),
+            storybookUrl: "http://localhost:6006",
           }),
+          storycap({
+            output: {
+              file: (context: { file: string; name: string }) =>
+                path.join(context.file.replace(".stories.tsx", ""), `${context.name}.png`),
+            },
+          }) as PluginOption,
         ],
         test: {
           name: "storybook",

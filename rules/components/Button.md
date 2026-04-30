@@ -2,29 +2,34 @@
 
 ## Purpose
 
-A themeable, accessible button. Use it for any action a user takes — `submit`, `cancel`, dialog triggers, destructive actions, etc.
+A themeable, accessible button. Use it for any action a user takes — `submit`, `cancel`, dialog triggers, etc.
 
 ## Import
 
 ```tsx
-import { Button } from "@kichikawa57/ai-design-system";
-import "@kichikawa57/ai-design-system/styles.css"; // once, at app root
+import { Button } from "@kt057/ai-design-system";
+import "@kt057/ai-design-system/styles.css"; // once, at app root
 ```
 
 ## Props
 
-| Prop         | Type                                              | Default     | Description                                                        |
-| ------------ | ------------------------------------------------- | ----------- | ------------------------------------------------------------------ |
-| `variant`    | `"primary" \| "secondary" \| "ghost" \| "danger"` | `"primary"` | Visual style.                                                      |
-| `size`       | `"sm" \| "md" \| "lg"`                            | `"md"`      | Height, padding, and font size.                                    |
-| `fullWidth`  | `boolean`                                         | `false`     | Stretch to fill the container's width.                             |
-| `isDisabled` | `boolean`                                         | `false`     | Disable activation (still rendered, not focusable).                |
-| `isPending`  | `boolean`                                         | `false`     | Mark the button as performing an async action (cursor + a11y).     |
-| `onPress`    | `(e: PressEvent) => void`                         | —           | Activation callback. **Use this, not `onClick`.**                  |
-| `className`  | `string`                                          | —           | Extra Tailwind classes; merged with `tailwind-merge` (later wins). |
-| `children`   | `ReactNode`                                       | —           | Button label.                                                      |
+| Prop         | Type                       | Default     | Description                                                        |
+| ------------ | -------------------------- | ----------- | ------------------------------------------------------------------ |
+| `variant`    | `"primary" \| "secondary"` | `"primary"` | Visual style.                                                      |
+| `size`       | `"sm" \| "md" \| "lg"`     | `"md"`      | Height, padding, and font size.                                    |
+| `fullWidth`  | `boolean`                  | `false`     | Stretch to fill the container's width.                             |
+| `isDisabled` | `boolean`                  | `false`     | Disable activation (still rendered, not focusable).                |
+| `isPending`  | `boolean`                  | `false`     | Mark the button as performing an async action (cursor + a11y).     |
+| `onPress`    | `(e: PressEvent) => void`  | —           | Activation callback. **Use this, not `onClick`.**                  |
+| `className`  | `string`                   | —           | Extra Tailwind classes; merged with `tailwind-merge` (later wins). |
+| `children`   | `ReactNode`                | —           | Button label.                                                      |
 
 The component also accepts every prop from [`react-aria-components`'s `Button`](https://react-spectrum.adobe.com/react-aria/Button.html#props), such as `type`, `form`, `excludeFromTabOrder`, etc.
+
+## Variants
+
+- **variant:** `primary` (filled brand color) | `secondary` (white with border)
+- **size:** `sm` (24 px tall) | `md` (36 px) | `lg` (44 px)
 
 ## Examples
 
@@ -42,11 +47,11 @@ The component also accepts every prop from [`react-aria-components`'s `Button`](
 </Button>
 ```
 
-**Destructive, async**
+**Async**
 
 ```tsx
-<Button variant="danger" isPending={isDeleting} onPress={() => del()}>
-  Delete account
+<Button isPending={isSaving} onPress={() => save()}>
+  Save
 </Button>
 ```
 
@@ -54,8 +59,8 @@ The component also accepts every prop from [`react-aria-components`'s `Button`](
 
 ```css
 :root {
-  --color-brand-600: oklch(55% 0.22 30);
-  --color-brand-700: oklch(48% 0.22 30);
+  --color-brand-primary: #14a37f;
+  --color-brand-primary-hover: #0e7a5e;
 }
 ```
 
@@ -76,6 +81,6 @@ You must still:
 ## Don'ts
 
 - ❌ **Don't** use `onClick` — React Aria's `onPress` covers mouse, touch, and keyboard uniformly.
-- ❌ **Don't** disable + style as enabled. Use `isDisabled` consistently or pick a different variant.
+- ❌ **Don't** disable + style as enabled. Use `isDisabled` consistently.
 - ❌ **Don't** override colors via `style={{ background: ... }}`. Override tokens instead.
-- ❌ **Don't** wrap a `<Button>` in an `<a>` to make it a link. Use a future `<Link>` component (or `react-aria-components`'s `Link`) for navigation.
+- ❌ **Don't** wrap a `<Button>` in an `<a>` to make it a link. Use `<Link>` for navigation.

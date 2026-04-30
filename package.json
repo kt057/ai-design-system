@@ -1,12 +1,12 @@
 {
-  "name": "@kichikawa57/ai-design-system",
+  "name": "@kt057/ai-design-system",
   "version": "0.1.0",
   "description": "AI-friendly React design system built on React Aria Components and Tailwind CSS v4. Ships with a machine-readable component manifest and rule docs so AI agents can use it correctly in any consumer project.",
   "license": "MIT",
   "author": "kichikawa57 <k.ichikawa057@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kichikawa57/ai-design-system.git"
+    "url": "git+https://github.com/KT057/ai-design-system.git"
   },
   "keywords": [
     "react",
@@ -62,6 +62,10 @@
     "build:storybook": "storybook build",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:vrt": "vitest --project=storybook --run",
+    "reg-suit:run": "reg-suit run",
+    "reg-suit:publish": "reg-suit publish",
+    "install:playwright:browser": "npx playwright install --with-deps chromium",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -88,6 +92,7 @@
     "@storybook/addon-docs": "^10.3.6",
     "@storybook/addon-vitest": "^10.3.6",
     "@storybook/react-vite": "^10.3.6",
+    "@storycap-testrun/browser": "^2.1.1",
     "@tailwindcss/cli": "^4.2.4",
     "@tailwindcss/postcss": "^4.0.0",
     "@tailwindcss/vite": "^4.0.0",
@@ -114,6 +119,10 @@
     "prettier-plugin-tailwindcss": "^0.6.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "reg-keygen-git-hash-plugin": "^0.14.5",
+    "reg-notify-github-plugin": "^0.14.5",
+    "reg-publish-s3-plugin": "^0.14.4",
+    "reg-suit": "^0.14.5",
     "storybook": "^10.3.6",
     "tailwindcss": "^4.0.0",
     "tsup": "^8.3.5",

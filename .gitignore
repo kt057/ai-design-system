@@ -14,3 +14,7 @@ coverage
 
 # generated artifacts (regenerated on build)
 src/__generated__
+
+# VRT — regenerated each run; S3 (via reg-publish-s3-plugin) is the baseline source of truth.
+.reg/
+__screenshots__/

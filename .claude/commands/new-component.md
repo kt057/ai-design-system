@@ -3,7 +3,7 @@ description: Scaffold and implement a new component in this design system follow
 argument-hint: <ComponentName>
 ---
 
-You are about to add the `$ARGUMENTS` component to `@kichikawa57/ai-design-system`.
+You are about to add the `$ARGUMENTS` component to `@kt057/ai-design-system`.
 
 Delegate this work to the **component-author** subagent. Pass it the following directive verbatim:
 
