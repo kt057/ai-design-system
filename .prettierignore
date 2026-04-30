@@ -1,0 +1,7 @@
+dist
+node_modules
+storybook-static
+coverage
+pnpm-lock.yaml
+components.json
+src/__generated__

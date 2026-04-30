@@ -1,0 +1,8 @@
+*
+
+!dist/**
+!rules/**
+!components.json
+!README.md
+!LICENSE
+!CHANGELOG.md

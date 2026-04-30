@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+/*
+ * Tell Tailwind which files to scan for class names. This makes the published
+ * `dist/styles.css` self-contained: it ships the @theme tokens AND every
+ * utility class our components actually use, so consumers can `import` it
+ * with no Tailwind setup of their own.
+ */
+@source "../components/**/*.{ts,tsx}";
+
+/*
+ * Design tokens for @kichikawa57/ai-design-system.
+ *
+ * Tokens are exposed as Tailwind v4 theme variables (`@theme`) so they are
+ * available both as CSS custom properties (`--color-brand-500`) and as
+ * Tailwind utility classes (`bg-brand-500`, `text-fg-default`, etc.).
+ *
+ * Consumers can override any of these by redeclaring the variable in their
+ * own stylesheet AFTER importing `@kichikawa57/ai-design-system/styles.css`.
+ */
+@theme {
+  /* ---------- color ---------- */
+  --color-brand-50: oklch(97% 0.02 260);
+  --color-brand-100: oklch(94% 0.04 260);
+  --color-brand-200: oklch(88% 0.08 260);
+  --color-brand-300: oklch(80% 0.12 260);
+  --color-brand-400: oklch(70% 0.16 260);
+  --color-brand-500: oklch(60% 0.2 260);
+  --color-brand-600: oklch(52% 0.2 260);
+  --color-brand-700: oklch(44% 0.18 260);
+  --color-brand-800: oklch(36% 0.14 260);
+  --color-brand-900: oklch(28% 0.1 260);
+
+  --color-fg-default: oklch(20% 0.02 260);
+  --color-fg-muted: oklch(45% 0.02 260);
+  --color-fg-subtle: oklch(60% 0.02 260);
+  --color-fg-onbrand: oklch(99% 0.005 260);
+
+  --color-bg-default: oklch(99% 0.005 260);
+  --color-bg-subtle: oklch(96% 0.01 260);
+  --color-bg-muted: oklch(92% 0.01 260);
+
+  --color-border-default: oklch(88% 0.01 260);
+  --color-border-strong: oklch(70% 0.02 260);
+
+  --color-danger-500: oklch(60% 0.22 25);
+  --color-danger-600: oklch(52% 0.22 25);
+  --color-success-500: oklch(65% 0.18 145);
+  --color-warning-500: oklch(75% 0.18 80);
+
+  /* ---------- radius ---------- */
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-pill: 9999px;
+
+  /* ---------- spacing scale (additive to Tailwind defaults) ---------- */
+  --spacing-touch: 2.75rem; /* 44px — minimum tap target */
+
+  /* ---------- typography ---------- */
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+
+  /* ---------- elevation ---------- */
+  --shadow-sm: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
+  --shadow-md: 0 2px 8px -1px oklch(0% 0 0 / 0.1);
+  --shadow-lg: 0 8px 24px -4px oklch(0% 0 0 / 0.12);
+
+  /* ---------- motion ---------- */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-fg-default: oklch(96% 0.01 260);
+    --color-fg-muted: oklch(75% 0.02 260);
+    --color-fg-subtle: oklch(60% 0.02 260);
+    --color-bg-default: oklch(18% 0.02 260);
+    --color-bg-subtle: oklch(22% 0.02 260);
+    --color-bg-muted: oklch(28% 0.02 260);
+    --color-border-default: oklch(32% 0.02 260);
+    --color-border-strong: oklch(50% 0.02 260);
+  }
+}
+
+/*
+ * Base styles applied wherever the consumer imports the stylesheet.
+ * Kept minimal so the design system never fights with the host page.
+ */
+@layer base {
+  :where([data-rac]) {
+    outline: none;
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":semanticCommits", ":dependencyDashboard"],
+  "timezone": "Asia/Tokyo",
+  "schedule": ["before 6am on monday"],
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  "rangeStrategy": "bump",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on monday"]
+  },
+  "packageRules": [
+    {
+      "description": "Auto-merge non-major devDependency updates after CI passes",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "description": "Auto-merge patch updates everywhere",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "description": "Group React + react-dom together",
+      "matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
+      "groupName": "react"
+    },
+    {
+      "description": "Group Storybook packages together",
+      "matchPackageNames": ["/^storybook$/", "/^@storybook//"],
+      "groupName": "storybook"
+    },
+    {
+      "description": "Group Vitest packages together",
+      "matchPackageNames": ["vitest", "@vitest/browser"],
+      "groupName": "vitest"
+    },
+    {
+      "description": "Group Tailwind packages together",
+      "matchPackageNames": ["tailwindcss", "/^@tailwindcss//", "prettier-plugin-tailwindcss"],
+      "groupName": "tailwind"
+    },
+    {
+      "description": "Group eslint + plugins together",
+      "matchPackageNames": ["eslint", "/^@eslint//", "/^eslint-/", "typescript-eslint"],
+      "groupName": "eslint"
+    },
+    {
+      "description": "React Aria — major bumps must be reviewed manually",
+      "matchPackageNames": ["react-aria-components"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    }
+  ]
+}

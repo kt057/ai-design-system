@@ -1,0 +1,16 @@
+node_modules
+dist
+storybook-static
+coverage
+.DS_Store
+*.log
+.env
+.env.local
+.env.*.local
+.turbo
+.cache
+.vite
+*.tsbuildinfo
+
+# generated artifacts (regenerated on build)
+src/__generated__

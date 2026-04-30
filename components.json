@@ -1,0 +1,363 @@
+{
+  "$schema": "https://json.schemastore.org/component-manifest.json",
+  "name": "@kichikawa57/ai-design-system",
+  "version": "0.1.0",
+  "description": "AI-friendly React design system built on React Aria Components and Tailwind CSS v4. Ships with a machine-readable component manifest and rule docs so AI agents can use it correctly in any consumer project.",
+  "generatedAt": "2026-04-30T04:10:07.267Z",
+  "rulesEntry": "rules/README.md",
+  "stylesEntry": "dist/styles.css",
+  "components": [
+    {
+      "name": "Button",
+      "description": "Accessible, themeable button.\n\nBuilt on top of `react-aria-components`'s `<Button>`, so it handles\nkeyboard activation, focus rings, press states, and disabled / pending\nsemantics for you. Variants and sizes are wired through CVA.\n\n```tsx\n<Button variant=\"primary\" onPress={() => save()}>Save</Button>\n```",
+      "importStatement": "import { Button } from \"@kichikawa57/ai-design-system\";",
+      "sourcePath": "src/components/Button/Button.tsx",
+      "rulesPath": "rules/components/Button.md",
+      "props": [
+        {
+          "name": "variant",
+          "type": "\"primary\" | \"secondary\" | \"ghost\" | \"danger\"",
+          "optional": true,
+          "defaultValue": "\"primary\"",
+          "description": "Visual style of the button."
+        },
+        {
+          "name": "size",
+          "type": "\"sm\" | \"md\" | \"lg\"",
+          "optional": true,
+          "defaultValue": "\"md\"",
+          "description": "Size of the button (controls height, padding, and font size)."
+        },
+        {
+          "name": "fullWidth",
+          "type": "boolean",
+          "optional": true,
+          "defaultValue": "false",
+          "description": "Stretch the button to fill the width of its container."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Override or extend the computed Tailwind class list."
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Button label."
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Whether the button is disabled."
+        },
+        {
+          "name": "onPress",
+          "type": "((e: PressEvent) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when the press is released over the target."
+        },
+        {
+          "name": "onPressStart",
+          "type": "((e: PressEvent) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when a press interaction starts."
+        },
+        {
+          "name": "onPressEnd",
+          "type": "((e: PressEvent) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when a press interaction ends, either\nover the target or when the pointer leaves the target."
+        },
+        {
+          "name": "onPressChange",
+          "type": "((isPressed: boolean) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when the press state changes."
+        },
+        {
+          "name": "onPressUp",
+          "type": "((e: PressEvent) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when a press is released over the target, regardless of\nwhether it started on the target or not."
+        },
+        {
+          "name": "onClick",
+          "type": "((e: MouseEvent<FocusableElement, MouseEvent>) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "**Not recommended – use `onPress` instead.** `onClick` is an alias for `onPress`\nprovided for compatibility with other libraries. `onPress` provides \nadditional event details for non-mouse interactions."
+        },
+        {
+          "name": "autoFocus",
+          "type": "boolean | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Whether the element should receive focus on render."
+        },
+        {
+          "name": "onFocus",
+          "type": "((e: FocusEvent<Element, Element>) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when the element receives focus."
+        },
+        {
+          "name": "onBlur",
+          "type": "((e: FocusEvent<Element, Element>) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when the element loses focus."
+        },
+        {
+          "name": "onFocusChange",
+          "type": "((isFocused: boolean) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when the element's focus status changes."
+        },
+        {
+          "name": "onKeyDown",
+          "type": "((e: KeyboardEvent) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when a key is pressed."
+        },
+        {
+          "name": "onKeyUp",
+          "type": "((e: KeyboardEvent) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when a key is released."
+        },
+        {
+          "name": "aria-disabled",
+          "type": "boolean | \"true\" | \"false\" | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Indicates whether the element is disabled to users of assistive technology."
+        },
+        {
+          "name": "aria-expanded",
+          "type": "boolean | \"true\" | \"false\" | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed."
+        },
+        {
+          "name": "aria-haspopup",
+          "type": "boolean | \"true\" | \"false\" | \"menu\" | \"listbox\" | \"tree\" | \"grid\" | \"dialog\" | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Indicates the availability and type of interactive popup element, such as menu or dialog, that can be triggered by an element."
+        },
+        {
+          "name": "aria-controls",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Identifies the element (or elements) whose contents or presence are controlled by the current element."
+        },
+        {
+          "name": "aria-pressed",
+          "type": "boolean | \"true\" | \"false\" | \"mixed\" | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Indicates the current \"pressed\" state of toggle buttons."
+        },
+        {
+          "name": "aria-current",
+          "type": "boolean | \"true\" | \"false\" | \"page\" | \"step\" | \"location\" | \"date\" | \"time\" | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Indicates whether this element represents the current item within a container or set of related elements."
+        },
+        {
+          "name": "type",
+          "type": "\"button\" | \"submit\" | \"reset\" | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "The behavior of the button when used in an HTML form."
+        },
+        {
+          "name": "preventFocusOnPress",
+          "type": "boolean | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Whether to prevent focus from moving to the button when pressing it.\n\nCaution, this can make the button inaccessible and should only be used when alternative keyboard interaction is provided,\nsuch as ComboBox's MenuTrigger or a NumberField's increment/decrement control."
+        },
+        {
+          "name": "form",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "The `<form>` element to associate the button with.\nThe value of this attribute must be the id of a `<form>` in the same document.\nSee [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#form)."
+        },
+        {
+          "name": "formAction",
+          "type": "string | ((formData: FormData) => void | Promise<void>) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "The URL that processes the information submitted by the button.\nOverrides the action attribute of the button's form owner."
+        },
+        {
+          "name": "formEncType",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Indicates how to encode the form data that is submitted."
+        },
+        {
+          "name": "formMethod",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Indicates the HTTP method used to submit the form."
+        },
+        {
+          "name": "formNoValidate",
+          "type": "boolean | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Indicates that the form is not to be validated when it is submitted."
+        },
+        {
+          "name": "formTarget",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Overrides the target attribute of the button's form owner."
+        },
+        {
+          "name": "name",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Submitted as a pair with the button's value as part of the form data."
+        },
+        {
+          "name": "value",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "The value associated with the button's name when it's submitted with the form data."
+        },
+        {
+          "name": "excludeFromTabOrder",
+          "type": "boolean | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Whether to exclude the element from the sequential tab order. If true,\nthe element will not be focusable via the keyboard by tabbing. This should\nbe avoided except in rare scenarios where an alternative means of accessing\nthe element or its functionality via the keyboard is available."
+        },
+        {
+          "name": "id",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "The element's unique identifier. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id)."
+        },
+        {
+          "name": "aria-label",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Defines a string value that labels the current element."
+        },
+        {
+          "name": "aria-labelledby",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Identifies the element (or elements) that labels the current element."
+        },
+        {
+          "name": "aria-describedby",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Identifies the element (or elements) that describes the object."
+        },
+        {
+          "name": "aria-details",
+          "type": "string | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Identifies the element (or elements) that provide a detailed, extended description for the object."
+        },
+        {
+          "name": "isPending",
+          "type": "boolean | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Whether the button is in a pending state. This disables press and hover events\nwhile retaining focusability, and announces the pending state to screen readers."
+        },
+        {
+          "name": "onHoverStart",
+          "type": "((e: HoverEvent) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when a hover interaction starts."
+        },
+        {
+          "name": "onHoverEnd",
+          "type": "((e: HoverEvent) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when a hover interaction ends."
+        },
+        {
+          "name": "onHoverChange",
+          "type": "((isHovering: boolean) => void) | undefined",
+          "optional": true,
+          "defaultValue": null,
+          "description": "Handler that is called when the hover state changes."
+        }
+      ],
+      "variants": [
+        {
+          "name": "variant",
+          "values": [
+            "primary",
+            "secondary",
+            "ghost",
+            "danger"
+          ],
+          "defaultValue": "primary"
+        },
+        {
+          "name": "size",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "defaultValue": "md"
+        },
+        {
+          "name": "fullWidth",
+          "values": [
+            "true",
+            "false"
+          ],
+          "defaultValue": "false"
+        }
+      ],
+      "examples": [
+        "import { Button } from \"@kichikawa57/ai-design-system\";\nimport \"@kichikawa57/ai-design-system/styles.css\"; // once, at app root",
+        "<Button onPress={() => save()}>Save</Button>",
+        "<Button variant=\"secondary\" fullWidth onPress={() => cancel()}>\n  Cancel\n</Button>",
+        "<Button variant=\"danger\" isPending={isDeleting} onPress={() => del()}>\n  Delete account\n</Button>"
+      ]
+    }
+  ]
+}
