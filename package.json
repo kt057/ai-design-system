@@ -73,7 +73,8 @@
     "typecheck": "tsc --noEmit",
     "changeset": "changeset",
     "release": "pnpm run build && changeset publish",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "pnpm run build",
+    "prepack": "pnpm run build"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",

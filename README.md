@@ -12,15 +12,31 @@ The design system is small on purpose. Every component ships with:
 
 ## Installation
 
+> **Note**: This package is not yet on the npm registry, so `npm install @kt057/ai-design-system` does not work yet. To try it out, build a tarball from this repo and install that directly. This section will be replaced once npm publishing is unblocked — see [Roadmap](#roadmap).
+
+### 1. Build a tarball (in this repo)
+
 ```bash
-npm install @kt057/ai-design-system
-# or
-pnpm add @kt057/ai-design-system
-# or
-yarn add @kt057/ai-design-system
+pnpm install
+pnpm pack
+# → kt057-ai-design-system-<version>.tgz is created at the repo root
 ```
 
-Then, **once at the root of your app**:
+The `prepack` hook runs `pnpm run build` (library + CSS + manifest) automatically, so `pnpm pack` alone produces a fully-built tarball.
+
+### 2. Install in the consuming project
+
+```bash
+pnpm add /absolute/path/to/kt057-ai-design-system-<version>.tgz
+# example:
+# pnpm add /Users/you/works/ai-design-system/kt057-ai-design-system-0.2.0.tgz
+```
+
+This is an absolute-path install, so to use the same tarball on another machine you'll need to copy the `.tgz` file over.
+
+### 3. Load the stylesheet
+
+Once, at the entry point of your app:
 
 ```ts
 import "@kt057/ai-design-system/styles.css";
@@ -89,6 +105,12 @@ pnpm changeset            # record a release note
 ```
 
 To add a new component, see [`rules/02-component-conventions.md`](./rules/02-component-conventions.md). Or, in Claude Code, run `/new-component <Name>`.
+
+## Roadmap
+
+- [ ] **Publish to the npm registry** — the first publish of this scoped package currently fails with `E404 Not Found - PUT` (same pattern as [npm/cli#8678](https://github.com/npm/cli/issues/8678) / [#8976](https://github.com/npm/cli/issues/8976)) and is under investigation.
+- [ ] **CI-driven release via GitHub Actions** — `.github/workflows/release.yml` is wired up but fails on every push to `main` for the same reason. It will be re-enabled once npm publishing works.
+- [ ] **Replace the Installation section** — once the package is on npm, swap the tarball workflow back out for plain `pnpm add @kt057/ai-design-system`.
 
 ## License
 

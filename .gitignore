@@ -11,6 +11,7 @@ coverage
 .cache
 .vite
 *.tsbuildinfo
+*.tgz
 
 # generated artifacts (regenerated on build)
 src/__generated__
