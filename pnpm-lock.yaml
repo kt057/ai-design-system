@@ -18,8 +18,8 @@ importers:
         specifier: ^1.6.0
         version: 1.17.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       tailwind-merge:
-        specifier: ^2.6.0
-        version: 2.6.1
+        specifier: ^3.5.0
+        version: 3.5.0
     devDependencies:
       '@changesets/cli':
         specifier: ^2.31.0
@@ -1390,6 +1390,7 @@ packages:
   '@smithy/util-retry@4.3.6':
     resolution: {integrity: sha512-p6/FO1n2KxMeQyna067i0uJ6TSbb165ZhnRtCpWh4Foxqbfc6oW+XITaL8QkFJj3KFnDe2URt4gOhgU06EP9ew==}
     engines: {node: '>=18.0.0'}
+    deprecated: '@smithy/util-retry v4.3.6 contains a bug in Adaptive Retry, see https://github.com/smithy-lang/smithy-typescript/issues/1993. Upgrade to 4.3.7+'
 
   '@smithy/util-stream@4.5.25':
     resolution: {integrity: sha512-/PFpG4k8Ze8Ei+mMKj3oiPICYekthuzePZMgZbCqMiXIHHf4n2aZ4Ps0aSRShycFTGuj/J6XldmC0x0DwednIA==}
@@ -4045,8 +4046,8 @@ packages:
     peerDependencies:
       tailwindcss: ^3.3.0 || ^4.0.0 || ^4.0.0-beta
 
-  tailwind-merge@2.6.1:
-    resolution: {integrity: sha512-Oo6tHdpZsGpkKG88HJ8RR1rg/RdnEkQEfMoEk2x1XRI3F1AxeU+ijRXpiVUF4UbLfcxxRGw6TbUINKYdWVsQTQ==}
+  tailwind-merge@3.5.0:
+    resolution: {integrity: sha512-I8K9wewnVDkL1NTGoqWmVEIlUcB9gFriAEkXkfCjX5ib8ezGxtR3xD7iZIxrfArjEsH7F1CHD4RFUtxefdqV/A==}
 
   tailwindcss@4.2.4:
     resolution: {integrity: sha512-HhKppgO81FQof5m6TEnuBWCZGgfRAWbaeOaGT00KOy/Pf/j6oUihdvBpA7ltCeAvZpFhW3j0PTclkxsd4IXYDA==}
@@ -9001,7 +9002,7 @@ snapshots:
       local-pkg: 1.1.2
       tailwindcss: 4.2.4
 
-  tailwind-merge@2.6.1: {}
+  tailwind-merge@3.5.0: {}
 
   tailwindcss@4.2.4: {}
 
