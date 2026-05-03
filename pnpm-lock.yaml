@@ -100,7 +100,7 @@ importers:
         specifier: 4.0.0-beta.0
         version: 4.0.0-beta.0(tailwindcss@4.2.4)
       globals:
-        specifier: ^15.14.0
+        specifier: ^15.15.0
         version: 15.15.0
       jsdom:
         specifier: ^26.0.0
