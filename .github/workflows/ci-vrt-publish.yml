@@ -81,7 +81,7 @@ jobs:
             --project=storybook \
             --reporter=dot
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: screenshots-${{ matrix.index }}
           path: __screenshots__
@@ -124,7 +124,7 @@ jobs:
         run: |
           git checkout ${GITHUB_REF#refs/heads/} || git checkout -b ${GITHUB_REF#refs/heads/} && git pull
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           pattern: screenshots-*
           merge-multiple: false
