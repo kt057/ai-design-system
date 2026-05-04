@@ -19,6 +19,7 @@
     "useDefineForClassFields": true,
     "allowImportingTsExtensions": false,
     "noEmit": true,
+    "ignoreDeprecations": "6.0",
     "types": ["node", "vitest/globals"],
     "paths": {
       "@/*": ["./src/*"]
