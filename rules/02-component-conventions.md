@@ -9,6 +9,7 @@ Each component lives under `src/components/<Name>/` with **exactly** these files
 ```
 src/components/<Name>/
 ├── <Name>.tsx           # implementation
+├── <Name>.figma.tsx     # Figma Code Connect mapping (mandatory — see 04-code-connect.md)
 ├── <Name>.stories.tsx   # Storybook stories (mandatory)
 ├── <Name>.test.tsx      # Vitest unit tests (mandatory)
 └── index.ts             # barrel — re-exports the component and its prop type
@@ -68,3 +69,7 @@ For every component, ship a markdown rule file mirroring [`rules/components/Butt
 7. **Don'ts** — common misuses to avoid.
 
 This file is what AI agents read when asked to use the component in a downstream project.
+
+## Runtime verification
+
+After the implementation, stories, and tests are in place, follow [`05-runtime-verification.md`](./05-runtime-verification.md) to drive the component in a real browser via Playwright MCP. The Vitest browser-mode run inside `pnpm test` is a regression net for CI; it is **not** a substitute for the agent confirming, story by story, that the new behavior actually works.

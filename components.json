@@ -12,6 +12,8 @@
       "importStatement": "import { Alert } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Alert/Alert.tsx",
       "rulesPath": "rules/components/Alert.md",
+      "codeConnectPath": "src/components/Alert/Alert.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=10-40",
       "props": [
         {
           "name": "variant",
@@ -443,6 +445,8 @@
       "importStatement": "import { Avatar } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Avatar/Avatar.tsx",
       "rulesPath": "rules/components/Avatar.md",
+      "codeConnectPath": "src/components/Avatar/Avatar.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=7-32",
       "props": [
         {
           "name": "src",
@@ -895,6 +899,8 @@
       "importStatement": "import { Badge } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Badge/Badge.tsx",
       "rulesPath": "rules/components/Badge.md",
+      "codeConnectPath": "src/components/Badge/Badge.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=5-51",
       "props": [
         {
           "name": "variant",
@@ -1320,6 +1326,8 @@
       "importStatement": "import { Button } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Button/Button.tsx",
       "rulesPath": "rules/components/Button.md",
+      "codeConnectPath": "src/components/Button/Button.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=4-74",
       "props": [
         {
           "name": "variant",
@@ -1670,6 +1678,8 @@
       "importStatement": "import { Card } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Card/Card.tsx",
       "rulesPath": "rules/components/Card.md",
+      "codeConnectPath": "src/components/Card/Card.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=6-44",
       "props": [
         {
           "name": "variant",
@@ -2100,6 +2110,8 @@
       "importStatement": "import { Checkbox } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Checkbox/Checkbox.tsx",
       "rulesPath": "rules/components/Checkbox.md",
+      "codeConnectPath": "src/components/Checkbox/Checkbox.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=6-34",
       "props": [
         {
           "name": "className",
@@ -2387,6 +2399,8 @@
       "importStatement": "import { Divider } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Divider/Divider.tsx",
       "rulesPath": "rules/components/Divider.md",
+      "codeConnectPath": "src/components/Divider/Divider.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=8-51",
       "props": [
         {
           "name": "orientation",
@@ -2466,6 +2480,8 @@
       "importStatement": "import { Input } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Input/Input.tsx",
       "rulesPath": "rules/components/Input.md",
+      "codeConnectPath": "src/components/Input/Input.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=5-40",
       "props": [
         {
           "name": "label",
@@ -2837,6 +2853,8 @@
       "importStatement": "import { Link } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Link/Link.tsx",
       "rulesPath": "rules/components/Link.md",
+      "codeConnectPath": "src/components/Link/Link.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=8-48",
       "props": [
         {
           "name": "className",
@@ -3068,6 +3086,8 @@
       "importStatement": "import { ModalTrigger } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Modal/Modal.tsx",
       "rulesPath": null,
+      "codeConnectPath": "src/components/Modal/Modal.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=11-30",
       "props": [
         {
           "name": "title",
@@ -3198,6 +3218,8 @@
       "importStatement": "import { RadioGroup } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Radio/Radio.tsx",
       "rulesPath": null,
+      "codeConnectPath": "src/components/Radio/Radio.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=8-34",
       "props": [
         {
           "name": "className",
@@ -3370,6 +3392,8 @@
       "importStatement": "import { SelectItem } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Select/Select.tsx",
       "rulesPath": null,
+      "codeConnectPath": "src/components/Select/Select.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=9-42",
       "props": [
         {
           "name": "className",
@@ -3591,6 +3615,8 @@
       "importStatement": "import { Spinner } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Spinner/Spinner.tsx",
       "rulesPath": "rules/components/Spinner.md",
+      "codeConnectPath": "src/components/Spinner/Spinner.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=11-29",
       "props": [
         {
           "name": "size",
@@ -4007,6 +4033,8 @@
       "importStatement": "import { Switch } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Switch/Switch.tsx",
       "rulesPath": "rules/components/Switch.md",
+      "codeConnectPath": "src/components/Switch/Switch.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=8-41",
       "props": [
         {
           "name": "className",
@@ -4210,6 +4238,8 @@
       "importStatement": "import { TabPanel } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Tabs/Tabs.tsx",
       "rulesPath": null,
+      "codeConnectPath": "src/components/Tabs/Tabs.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=10-45",
       "props": [
         {
           "name": "className",
@@ -4277,6 +4307,8 @@
       "importStatement": "import { Textarea } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Textarea/Textarea.tsx",
       "rulesPath": "rules/components/Textarea.md",
+      "codeConnectPath": "src/components/Textarea/Textarea.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=9-63",
       "props": [
         {
           "name": "label",
@@ -4655,6 +4687,8 @@
       "importStatement": "import { TooltipTrigger } from \"@kt057/ai-design-system\";",
       "sourcePath": "src/components/Tooltip/Tooltip.tsx",
       "rulesPath": null,
+      "codeConnectPath": "src/components/Tooltip/Tooltip.figma.tsx",
+      "figmaNodeUrl": "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=10-46",
       "props": [
         {
           "name": "className",

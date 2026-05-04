@@ -14,7 +14,9 @@ The full specification of how this design system works lives in [`rules/`](./rul
 2. [`rules/01-design-tokens.md`](./rules/01-design-tokens.md) — how theming works.
 3. [`rules/02-component-conventions.md`](./rules/02-component-conventions.md) — how to add or change a component. **Mandatory when authoring components.**
 4. [`rules/03-accessibility.md`](./rules/03-accessibility.md) — checklist that applies to every component.
-5. [`rules/components/<Name>.md`](./rules/components/) — per-component rule files.
+5. [`rules/04-code-connect.md`](./rules/04-code-connect.md) — Figma Code Connect templates and node map. **Mandatory when adding or renaming a component.**
+6. [`rules/05-runtime-verification.md`](./rules/05-runtime-verification.md) — Playwright MCP procedure to verify a component in a real browser. **Mandatory after every component change.**
+7. [`rules/components/<Name>.md`](./rules/components/) — per-component rule files.
 
 If a rule is missing, write it. If a rule is wrong, fix it. The rules are part of the package and are shipped to consumers.
 
@@ -30,6 +32,7 @@ If a rule is missing, write it. If a rule is wrong, fix it. The rules are part o
 | Lint / format  | `eslint` v9 (flat config) + `prettier` v3                      |
 | Versioning     | `@changesets/cli`                                              |
 | Updates        | Renovate (config in `renovate.json`)                           |
+| Browser MCP    | `@playwright/mcp` (declared in [`.mcp.json`](./.mcp.json))     |
 
 ## Shortcuts
 
@@ -43,6 +46,8 @@ If a rule is missing, write it. If a rule is wrong, fix it. The rules are part o
 | Type-check                   | `pnpm typecheck`      |
 | Add a changeset              | `pnpm changeset`      |
 | Regenerate `components.json` | `pnpm build:manifest` |
+| Validate Code Connect locally| `pnpm code-connect:parse` |
+| Publish Code Connect to Figma| `pnpm code-connect:publish` (CI only) |
 
 ## Adding a new component (TL;DR)
 
@@ -50,13 +55,16 @@ If a rule is missing, write it. If a rule is wrong, fix it. The rules are part o
 2. Use `Button` ([`src/components/Button/`](./src/components/Button/)) as your reference implementation.
 3. Create:
    - `src/components/<Name>/<Name>.tsx`
+   - `src/components/<Name>/<Name>.figma.tsx` (Code Connect mapping — see [`rules/04-code-connect.md`](./rules/04-code-connect.md))
    - `src/components/<Name>/<Name>.stories.tsx` (with at least one interaction story)
    - `src/components/<Name>/<Name>.test.tsx`
    - `src/components/<Name>/index.ts`
 4. Export from `src/index.ts`.
 5. Write `rules/components/<Name>.md` mirroring the Button rule file.
-6. Run `pnpm build:manifest` and commit the resulting `components.json`.
-7. Run `pnpm changeset` to record a release note.
+6. Run `pnpm code-connect:parse` to validate the new mapping.
+7. Verify in a real browser by following [`rules/05-runtime-verification.md`](./rules/05-runtime-verification.md) (start `pnpm dev` in the background, drive the story via Playwright MCP, stop the server when done).
+8. Run `pnpm build:manifest` and commit the resulting `components.json`.
+9. Run `pnpm changeset` to record a release note.
 
 ## Don'ts
 

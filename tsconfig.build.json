@@ -13,6 +13,8 @@
     "src/**/*.test.tsx",
     "src/**/*.stories.ts",
     "src/**/*.stories.tsx",
+    "src/**/*.figma.ts",
+    "src/**/*.figma.tsx",
     "src/__generated__"
   ]
 }

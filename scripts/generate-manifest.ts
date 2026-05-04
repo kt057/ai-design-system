@@ -38,6 +38,14 @@ interface ComponentEntry {
   importStatement: string;
   sourcePath: string;
   rulesPath: string | null;
+  /** Path to the Code Connect template, if one exists. */
+  codeConnectPath: string | null;
+  /**
+   * Canonical Figma URL for the component, parsed out of the Code Connect
+   * template. Lets AI agents resolve a component to its source-of-truth design
+   * without needing to read the .figma.tsx file.
+   */
+  figmaNodeUrl: string | null;
   props: PropEntry[];
   variants: VariantEntry[];
   examples: string[];
@@ -221,6 +229,19 @@ function extractVariantsFromCva(source: ts.SourceFile): VariantEntry[] {
   return variants;
 }
 
+/**
+ * Pulls the first Figma URL out of a Code Connect template file. We don't try
+ * to be clever — the URL is always the first argument (or second when the
+ * component reference comes first) of `figma.connect(...)`. A simple regex is
+ * sufficient and robust against template-string formatting.
+ */
+function extractFigmaNodeUrl(codeConnectPath: string): string | null {
+  if (!existsSync(codeConnectPath)) return null;
+  const src = readFileSync(codeConnectPath, "utf8");
+  const match = src.match(/"(https:\/\/www\.figma\.com\/design\/[^"]+)"/);
+  return match?.[1] ?? null;
+}
+
 function extractExamplesFromRules(rulesPath: string): string[] {
   if (!existsSync(rulesPath)) return [];
   const md = readFileSync(rulesPath, "utf8");
@@ -281,12 +302,18 @@ function buildComponent(dir: string, program: ts.Program): ComponentEntry | null
   const rulesPath = join(RULES_DIR, `${found.name}.md`);
   const hasRules = existsSync(rulesPath);
 
+  const codeConnectAbs = join(COMPONENTS_DIR, dir, `${dir}.figma.tsx`);
+  const hasCodeConnect = existsSync(codeConnectAbs);
+  const figmaNodeUrl = hasCodeConnect ? extractFigmaNodeUrl(codeConnectAbs) : null;
+
   return {
     name: found.name,
     description: found.description,
     importStatement: `import { ${found.name} } from "${PKG.name}";`,
     sourcePath: `src/components/${dir}/${dir}.tsx`,
     rulesPath: hasRules ? `rules/components/${found.name}.md` : null,
+    codeConnectPath: hasCodeConnect ? `src/components/${dir}/${dir}.figma.tsx` : null,
+    figmaNodeUrl,
     props,
     variants,
     examples: extractExamplesFromRules(rulesPath),
