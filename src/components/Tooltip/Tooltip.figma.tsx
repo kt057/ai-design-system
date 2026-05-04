@@ -7,16 +7,12 @@ import { Button } from "../Button/Button";
  * The Figma node has no variant axes — this snippet shows the canonical
  * `<TooltipTrigger>` + `<Tooltip>` composition.
  */
-figma.connect(
-  Tooltip,
-  "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=10-46",
-  {
-    props: {},
-    example: () => (
-      <TooltipTrigger>
-        <Button>Hover me</Button>
-        <Tooltip>Helpful hint</Tooltip>
-      </TooltipTrigger>
-    ),
-  },
-);
+figma.connect(Tooltip, "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=10-46", {
+  props: {},
+  example: () => (
+    <TooltipTrigger>
+      <Button>Hover me</Button>
+      <Tooltip>Helpful hint</Tooltip>
+    </TooltipTrigger>
+  ),
+});

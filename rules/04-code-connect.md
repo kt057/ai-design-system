@@ -28,25 +28,25 @@ Every Code Connect template **must**:
 
 ## Figma node map
 
-| Component | Figma node | Variant axes (Figma → code) |
-| --------- | ---------- | --------------------------- |
-| Alert     | `10:40`    | `variant` → `variant` |
-| Avatar    | `7:32`     | `size`, `shape` → `size`, `shape` |
-| Badge     | `5:51`     | `variant` → `variant` |
+| Component | Figma node | Variant axes (Figma → code)                                  |
+| --------- | ---------- | ------------------------------------------------------------ |
+| Alert     | `10:40`    | `variant` → `variant`                                        |
+| Avatar    | `7:32`     | `size`, `shape` → `size`, `shape`                            |
+| Badge     | `5:51`     | `variant` → `variant`                                        |
 | Button    | `4:74`     | `variant`, `size`, `state` → `variant`, `size`, `isDisabled` |
-| Card      | `6:44`     | `variant` → `variant` |
-| Checkbox  | `6:34`     | `state` → `isSelected` / `isIndeterminate` / `isDisabled` |
-| Divider   | `8:51`     | `orientation` → `orientation` |
-| Input     | `5:40`     | `state` → `isInvalid` / `isDisabled` |
-| Link      | `8:48`     | _(none — `state` is runtime-only)_ |
-| Modal     | `11:30`    | _(none — composition only)_ |
-| Radio     | `8:34`     | `state` → `isDisabled` |
-| Select    | `9:42`     | `state` → `isDisabled` |
-| Spinner   | `11:29`    | `size` → `size` |
-| Switch    | `8:41`     | `state` → `isSelected` / `isDisabled` |
-| Tabs      | `10:45`    | _(none — composition only)_ |
-| Textarea  | `9:63`     | `state` → `isInvalid` / `isDisabled` |
-| Tooltip   | `10:46`    | _(none — composition only)_ |
+| Card      | `6:44`     | `variant` → `variant`                                        |
+| Checkbox  | `6:34`     | `state` → `isSelected` / `isIndeterminate` / `isDisabled`    |
+| Divider   | `8:51`     | `orientation` → `orientation`                                |
+| Input     | `5:40`     | `state` → `isInvalid` / `isDisabled`                         |
+| Link      | `8:48`     | _(none — `state` is runtime-only)_                           |
+| Modal     | `11:30`    | _(none — composition only)_                                  |
+| Radio     | `8:34`     | `state` → `isDisabled`                                       |
+| Select    | `9:42`     | `state` → `isDisabled`                                       |
+| Spinner   | `11:29`    | `size` → `size`                                              |
+| Switch    | `8:41`     | `state` → `isSelected` / `isDisabled`                        |
+| Tabs      | `10:45`    | _(none — composition only)_                                  |
+| Textarea  | `9:63`     | `state` → `isInvalid` / `isDisabled`                         |
+| Tooltip   | `10:46`    | _(none — composition only)_                                  |
 
 ## Workflow
 

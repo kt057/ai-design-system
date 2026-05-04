@@ -14,28 +14,24 @@ import { Button } from "./Button";
  * counterpart because hover is handled by `react-aria-components` data
  * attributes at runtime. `state=disabled` maps to the `isDisabled` prop.
  */
-figma.connect(
-  Button,
-  "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=4-74",
-  {
-    props: {
-      variant: figma.enum("variant", {
-        primary: "primary",
-        secondary: "secondary",
-      }),
-      size: figma.enum("size", {
-        small: "sm",
-        medium: "md",
-        large: "lg",
-      }),
-      isDisabled: figma.enum("state", {
-        disabled: true,
-      }),
-    },
-    example: ({ variant, size, isDisabled }) => (
-      <Button variant={variant} size={size} isDisabled={isDisabled}>
-        Label
-      </Button>
-    ),
+figma.connect(Button, "https://www.figma.com/design/vMAQsMSeIcoHMumNzKLeaQ/?node-id=4-74", {
+  props: {
+    variant: figma.enum("variant", {
+      primary: "primary",
+      secondary: "secondary",
+    }),
+    size: figma.enum("size", {
+      small: "sm",
+      medium: "md",
+      large: "lg",
+    }),
+    isDisabled: figma.enum("state", {
+      disabled: true,
+    }),
   },
-);
+  example: ({ variant, size, isDisabled }) => (
+    <Button variant={variant} size={size} isDisabled={isDisabled}>
+      Label
+    </Button>
+  ),
+});

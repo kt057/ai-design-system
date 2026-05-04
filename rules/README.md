@@ -4,15 +4,15 @@ This folder is the **single source of truth** for how this design system is mean
 
 ## How to read this directory
 
-| File                                                           | Audience                 | Read it when…                                           |
-| -------------------------------------------------------------- | ------------------------ | ------------------------------------------------------- |
-| [`00-overview.md`](./00-overview.md)                           | Consumers + AI agents    | You are about to use the package for the first time.    |
-| [`01-design-tokens.md`](./01-design-tokens.md)                 | Consumers + AI agents    | You need to theme, override colors, or pick a token.    |
-| [`02-component-conventions.md`](./02-component-conventions.md) | Contributors + AI agents | You are about to write a new component or refactor one. |
-| [`03-accessibility.md`](./03-accessibility.md)                 | Everyone                 | You are reviewing or implementing any component.        |
+| File                                                           | Audience                 | Read it when…                                                                                       |
+| -------------------------------------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------- |
+| [`00-overview.md`](./00-overview.md)                           | Consumers + AI agents    | You are about to use the package for the first time.                                                |
+| [`01-design-tokens.md`](./01-design-tokens.md)                 | Consumers + AI agents    | You need to theme, override colors, or pick a token.                                                |
+| [`02-component-conventions.md`](./02-component-conventions.md) | Contributors + AI agents | You are about to write a new component or refactor one.                                             |
+| [`03-accessibility.md`](./03-accessibility.md)                 | Everyone                 | You are reviewing or implementing any component.                                                    |
 | [`04-code-connect.md`](./04-code-connect.md)                   | Contributors + AI agents | You are adding/updating a `*.figma.tsx` mapping or wiring a component to its Figma source-of-truth. |
-| [`05-runtime-verification.md`](./05-runtime-verification.md)   | Contributors + AI agents | You finished implementing a component and want to drive it in a real browser before opening a PR. |
-| [`components/*.md`](./components/)                             | Consumers + AI agents    | You need the contract for a specific component.         |
+| [`05-runtime-verification.md`](./05-runtime-verification.md)   | Contributors + AI agents | You finished implementing a component and want to drive it in a real browser before opening a PR.   |
+| [`components/*.md`](./components/)                             | Consumers + AI agents    | You need the contract for a specific component.                                                     |
 
 ## How AI agents should consume the rules
 
