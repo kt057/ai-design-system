@@ -1,15 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended", ":semanticCommits", ":dependencyDashboard"],
-  "timezone": "Asia/Tokyo",
-  "schedule": ["before 6am on monday"],
-  "prConcurrentLimit": 5,
-  "prHourlyLimit": 2,
   "rangeStrategy": "bump",
-  "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["before 6am on monday"]
-  },
+  "enabledManagers": ["npm"],
+  "timezone": "Asia/Tokyo",
+  "prConcurrentLimit": 1,
+  "platformAutomerge": true,
   "packageRules": [
     {
       "description": "Auto-merge non-major devDependency updates after CI passes",
