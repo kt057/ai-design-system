@@ -120,7 +120,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-storybook": "^10.3.6",
     "eslint-plugin-tailwindcss": "4.0.0-beta.0",
-    "globals": "^15.15.0",
+    "globals": "^17.6.0",
     "jsdom": "^26.1.0",
     "playwright": "^1.59.1",
     "postcss": "^8.5.13",
