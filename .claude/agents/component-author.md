@@ -64,4 +64,15 @@ pnpm build:manifest
 
 Verify that `components.json` now contains your component and commit it alongside the source change.
 
+## Verify in a real browser
+
+Follow [`rules/05-runtime-verification.md`](../../rules/05-runtime-verification.md). In short:
+
+1. Start Storybook in the background: `pnpm dev` (`run_in_background: true`).
+2. Once port 6006 is up, navigate via `mcp__playwright__browser_navigate` to `http://localhost:6006/iframe.html?id=components-<name>--<story-kebab>`.
+3. Use `mcp__playwright__browser_snapshot`, `browser_click`, and `browser_press_key` to confirm at minimum: the primary callback fires on click, keyboard activation works (Enter/Space), the disabled state suppresses both, and any state listed in `rules/components/<Name>.md` (focus trap, dialog open/close, validation, etc.) actually behaves.
+4. Stop the background dev server when done.
+
+Skip this step **only** if the change is documentation-only or the component has no interactive surface (e.g. `Divider`, `Spinner`).
+
 Finally, run `pnpm changeset` and write a single-line summary describing the user-visible change.

@@ -60,6 +60,9 @@
     "build:css": "tailwindcss -i src/styles/globals.css -o dist/styles.css --minify",
     "build:manifest": "tsx scripts/generate-manifest.ts",
     "build:storybook": "storybook build",
+    "code-connect:parse": "figma connect parse",
+    "code-connect:publish": "figma connect publish",
+    "code-connect:unpublish": "figma connect unpublish",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:vrt": "vitest --project=storybook --run",
@@ -89,6 +92,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.31.0",
     "@eslint/js": "^9.17.0",
+    "@figma/code-connect": "^1.4.4",
     "@storybook/addon-a11y": "^10.3.6",
     "@storybook/addon-docs": "^10.3.6",
     "@storybook/addon-vitest": "^10.3.6",

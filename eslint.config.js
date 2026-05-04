@@ -108,5 +108,17 @@ export default tseslint.config(
       "@typescript-eslint/no-explicit-any": "off",
     },
   },
+  {
+    // Code Connect template files. These are not real React code — they are
+    // metadata describing how to map Figma variants to component props. Disable
+    // the rules that don't apply (Tailwind classnames, exhaustive-deps, etc.).
+    files: ["src/**/*.figma.tsx", "src/**/*.figma.ts"],
+    rules: {
+      "tailwindcss/no-custom-classname": "off",
+      "react-hooks/rules-of-hooks": "off",
+      "react/jsx-key": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+    },
+  },
   prettier,
 );
