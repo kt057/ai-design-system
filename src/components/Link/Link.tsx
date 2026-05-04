@@ -8,7 +8,7 @@ const linkClass = cn(
   "hover:text-brand-primary-hover data-[hovered]:text-brand-primary-hover",
   "visited:text-text-secondary",
   "focus-visible:ring-border-focus outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-  "data-[disabled]:cursor-not-allowed data-[disabled]:text-text-disabled data-[disabled]:hover:text-text-disabled data-[disabled]:data-[hovered]:text-text-disabled",
+  "data-[disabled]:text-text-disabled data-[disabled]:hover:text-text-disabled data-[disabled]:data-[hovered]:text-text-disabled data-[disabled]:cursor-not-allowed",
 );
 
 export interface LinkProps extends Omit<AriaLinkProps, "className" | "children"> {
