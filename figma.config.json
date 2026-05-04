@@ -2,10 +2,7 @@
   "codeConnect": {
     "parser": "react",
     "label": "React",
-    "include": [
-      "src/components/**/*.figma.tsx",
-      "src/components/**/*.tsx"
-    ],
+    "include": ["src/components/**/*.figma.tsx", "src/components/**/*.tsx"],
     "exclude": ["**/node_modules/**", "dist/**", "storybook-static/**"],
     "importPaths": {
       "src/components/*": "@kt057/ai-design-system",

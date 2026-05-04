@@ -36,18 +36,18 @@ If a rule is missing, write it. If a rule is wrong, fix it. The rules are part o
 
 ## Shortcuts
 
-| Goal                         | Command               |
-| ---------------------------- | --------------------- |
-| Run Storybook                | `pnpm dev`            |
-| Build the library + manifest | `pnpm build`          |
-| Run all tests                | `pnpm test`           |
-| Lint                         | `pnpm lint`           |
-| Format                       | `pnpm format`         |
-| Type-check                   | `pnpm typecheck`      |
-| Add a changeset              | `pnpm changeset`      |
-| Regenerate `components.json` | `pnpm build:manifest` |
-| Validate Code Connect locally| `pnpm code-connect:parse` |
-| Publish Code Connect to Figma| `pnpm code-connect:publish` (CI only) |
+| Goal                          | Command                               |
+| ----------------------------- | ------------------------------------- |
+| Run Storybook                 | `pnpm dev`                            |
+| Build the library + manifest  | `pnpm build`                          |
+| Run all tests                 | `pnpm test`                           |
+| Lint                          | `pnpm lint`                           |
+| Format                        | `pnpm format`                         |
+| Type-check                    | `pnpm typecheck`                      |
+| Add a changeset               | `pnpm changeset`                      |
+| Regenerate `components.json`  | `pnpm build:manifest`                 |
+| Validate Code Connect locally | `pnpm code-connect:parse`             |
+| Publish Code Connect to Figma | `pnpm code-connect:publish` (CI only) |
 
 ## Adding a new component (TL;DR)
 

@@ -6,13 +6,13 @@
 
 The other layers of verification cover different things:
 
-| Layer                                | What it checks                                                                                  |
-| ------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| `pnpm lint` / `pnpm typecheck`       | Static correctness.                                                                             |
-| `pnpm test` (Vitest unit + jsdom)    | Logic and prop wiring in isolation.                                                             |
-| `pnpm test` (Vitest browser mode)    | Headless **regression** of `play(...)` stories in Chromium. Fails the build when a story breaks. |
-| Storycap + reg-suit                  | Pixel-level **visual** regression.                                                              |
-| **Playwright MCP (this file)**       | AI-driven **dynamic behavior** check on the work you just produced — focus traps, dialog open/close, keyboard order, validation, loading state DOM. |
+| Layer                             | What it checks                                                                                                                                      |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pnpm lint` / `pnpm typecheck`    | Static correctness.                                                                                                                                 |
+| `pnpm test` (Vitest unit + jsdom) | Logic and prop wiring in isolation.                                                                                                                 |
+| `pnpm test` (Vitest browser mode) | Headless **regression** of `play(...)` stories in Chromium. Fails the build when a story breaks.                                                    |
+| Storycap + reg-suit               | Pixel-level **visual** regression.                                                                                                                  |
+| **Playwright MCP (this file)**    | AI-driven **dynamic behavior** check on the work you just produced — focus traps, dialog open/close, keyboard order, validation, loading state DOM. |
 
 Vitest browser mode is for the build to police regressions. Playwright MCP is for **you, the agent, to convince yourself the thing actually works** before opening a PR.
 
@@ -70,13 +70,13 @@ Vitest browser mode is for the build to police regressions. Playwright MCP is fo
 
 All stories use the title pattern `Components/<Name>`, so iframe ids are `components-<name>--<story>`.
 
-| Component | Default story URL                                                                            |
-| --------- | -------------------------------------------------------------------------------------------- |
-| Button    | `http://localhost:6006/iframe.html?id=components-button--primary`                            |
+| Component | Default story URL                                                                                                                                         |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Button    | `http://localhost:6006/iframe.html?id=components-button--primary`                                                                                         |
 | Modal     | `http://localhost:6006/iframe.html?id=components-modal--default` (story name varies — list with `mcp__playwright__browser_navigate` + snapshot if unsure) |
-| Input     | `http://localhost:6006/iframe.html?id=components-input--default`                             |
-| Select    | `http://localhost:6006/iframe.html?id=components-select--default`                            |
-| Tabs      | `http://localhost:6006/iframe.html?id=components-tabs--default`                              |
+| Input     | `http://localhost:6006/iframe.html?id=components-input--default`                                                                                          |
+| Select    | `http://localhost:6006/iframe.html?id=components-select--default`                                                                                         |
+| Tabs      | `http://localhost:6006/iframe.html?id=components-tabs--default`                                                                                           |
 
 When unsure of the exact story name, navigate to `http://localhost:6006/` first and read the sidebar.
 
