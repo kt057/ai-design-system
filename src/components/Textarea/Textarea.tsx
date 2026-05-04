@@ -15,6 +15,7 @@ const fieldClass = cn(
   "text-text-primary text-base",
   "transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]",
   "data-[focus-within]:border-border-focus data-[focus-within]:border-2 data-[focus-within]:px-[11px] data-[focus-within]:py-[7px]",
+  "group-data-[disabled]:bg-bg-disabled group-data-[disabled]:border-border-disabled",
 );
 
 export interface TextareaProps extends Omit<TextFieldProps, "className" | "children"> {
@@ -59,10 +60,17 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
     <TextField
       isInvalid={isInvalid}
       isDisabled={isDisabled}
-      className={cn("flex w-[240px] flex-col gap-1", isDisabled && "opacity-55", className)}
+      className={cn("group flex w-[240px] flex-col gap-1", className)}
       {...rest}
     >
-      <Label className="text-text-primary text-xs font-semibold">{label}</Label>
+      <Label
+        className={cn(
+          "text-text-primary text-xs font-semibold",
+          isDisabled && "text-text-disabled",
+        )}
+      >
+        {label}
+      </Label>
       <div
         className={cn(fieldClass, isInvalid && "border-border-error border-2 px-[11px] py-[7px]")}
       >
@@ -70,7 +78,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
           ref={ref}
           rows={rows}
           placeholder={placeholder}
-          className="placeholder:text-text-secondary text-text-primary w-full resize-y bg-transparent text-base outline-none"
+          className="placeholder:text-text-secondary text-text-primary group-data-[disabled]:text-text-disabled group-data-[disabled]:placeholder:text-text-disabled w-full resize-y bg-transparent text-base outline-none"
         />
       </div>
       {helperText && !isInvalid ? (

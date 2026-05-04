@@ -8,7 +8,7 @@ import { cn } from "@/utils/cn";
 const wrapperClass = cn(
   "inline-flex items-center gap-2 select-none",
   "text-text-primary text-base",
-  "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+  "data-[disabled]:text-text-disabled data-[disabled]:cursor-not-allowed",
   "outline-none",
 );
 
@@ -19,6 +19,9 @@ const boxClass = cn(
   "transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]",
   "data-[selected]:bg-brand-primary data-[selected]:border-brand-primary",
   "data-[indeterminate]:bg-brand-primary data-[indeterminate]:border-brand-primary",
+  "group-data-[disabled]:bg-bg-disabled group-data-[disabled]:border-border-disabled",
+  "group-data-[disabled]:data-[selected]:bg-border-disabled group-data-[disabled]:data-[selected]:border-border-disabled",
+  "group-data-[disabled]:data-[indeterminate]:bg-border-disabled group-data-[disabled]:data-[indeterminate]:border-border-disabled",
   "group-data-[focus-visible]:ring-border-focus group-data-[focus-visible]:ring-2 group-data-[focus-visible]:ring-offset-2",
 );
 
@@ -46,12 +49,12 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(function Che
 ) {
   return (
     <AriaCheckbox ref={ref} className={cn("group", wrapperClass, className)} {...rest}>
-      {({ isIndeterminate }) => (
+      {({ isIndeterminate, isSelected }) => (
         <>
           <span className={boxClass} aria-hidden="true">
             {isIndeterminate ? (
               <span className="bg-text-inverse h-0.5 w-2.5 rounded-[1px]" />
-            ) : (
+            ) : isSelected ? (
               <svg viewBox="0 0 14 14" className="text-text-inverse size-3">
                 <path
                   d="M2.5 7.5l3 3 6-6"
@@ -60,10 +63,9 @@ export const Checkbox = forwardRef<HTMLLabelElement, CheckboxProps>(function Che
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   fill="none"
-                  className="origin-center scale-0 group-data-[selected]:scale-100"
                 />
               </svg>
-            )}
+            ) : null}
           </span>
           {children}
         </>

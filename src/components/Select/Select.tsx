@@ -20,7 +20,7 @@ const triggerClass = cn(
   "data-[focus-visible]:border-border-focus data-[focus-visible]:border-2 data-[focus-visible]:px-[11px] data-[focus-visible]:py-[7px]",
   "data-[open]:border-border-focus data-[open]:border-2 data-[open]:px-[11px] data-[open]:py-[7px]",
   "outline-none",
-  "data-[disabled]:cursor-not-allowed",
+  "data-[disabled]:bg-bg-disabled data-[disabled]:border-border-disabled data-[disabled]:text-text-disabled data-[disabled]:cursor-not-allowed",
 );
 
 const popoverClass = cn(
@@ -33,7 +33,7 @@ const popoverClass = cn(
 const itemClass = cn(
   "text-text-primary cursor-default px-3 py-2 text-base outline-none",
   "data-[focused]:bg-bg-subtle data-[selected]:bg-bg-subtle",
-  "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+  "data-[disabled]:text-text-disabled data-[disabled]:cursor-not-allowed",
 );
 
 export interface SelectProps<T extends object> extends Omit<
@@ -69,10 +69,19 @@ export const Select = forwardRef<HTMLDivElement, SelectProps<object>>(function S
     <AriaSelect
       ref={ref}
       isDisabled={isDisabled}
-      className={cn("flex w-[240px] flex-col gap-1", isDisabled && "opacity-55", className)}
+      className={cn("flex w-[240px] flex-col gap-1", className)}
       {...rest}
     >
-      {label ? <Label className="text-text-primary text-xs font-semibold">{label}</Label> : null}
+      {label ? (
+        <Label
+          className={cn(
+            "text-text-primary text-xs font-semibold",
+            isDisabled && "text-text-disabled",
+          )}
+        >
+          {label}
+        </Label>
+      ) : null}
       <AriaButton className={triggerClass}>
         <SelectValue className="text-text-primary data-[placeholder]:text-text-secondary flex-1">
           {({ defaultChildren, isPlaceholder }) =>

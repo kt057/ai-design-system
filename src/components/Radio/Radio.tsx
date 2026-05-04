@@ -10,7 +10,7 @@ import { cn } from "@/utils/cn";
 const wrapperClass = cn(
   "inline-flex items-center gap-2 select-none",
   "text-text-primary text-base",
-  "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+  "data-[disabled]:text-text-disabled data-[disabled]:cursor-not-allowed",
   "outline-none",
 );
 
@@ -20,6 +20,8 @@ const dotClass = cn(
   "border-border-strong border-[1.5px]",
   "transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]",
   "data-[selected]:border-brand-primary",
+  "group-data-[disabled]:bg-bg-disabled group-data-[disabled]:border-border-disabled",
+  "group-data-[disabled]:data-[selected]:border-border-disabled",
   "group-data-[focus-visible]:ring-border-focus group-data-[focus-visible]:ring-2 group-data-[focus-visible]:ring-offset-2",
 );
 
@@ -47,10 +49,16 @@ export const Radio = forwardRef<HTMLLabelElement, RadioProps>(function Radio(
 ) {
   return (
     <AriaRadio ref={ref} className={cn("group", wrapperClass, className)} {...rest}>
-      <span className={dotClass} aria-hidden="true">
-        <span className="bg-brand-primary size-2 origin-center scale-0 rounded-full transition-transform group-data-[selected]:scale-100" />
-      </span>
-      {children}
+      {({ isSelected }) => (
+        <>
+          <span className={dotClass} aria-hidden="true">
+            {isSelected ? (
+              <span className="bg-brand-primary group-data-[disabled]:bg-border-disabled size-2 rounded-full" />
+            ) : null}
+          </span>
+          {children}
+        </>
+      )}
     </AriaRadio>
   );
 });

@@ -35,6 +35,7 @@ Inherits every prop from [`react-aria-components`'s `Link`](https://react-spectr
 
 - Renders an anchor with the right `aria-disabled` when `isDisabled`.
 - Visited styling uses CSS `:visited` — fully theme-able via `--color-text-secondary`.
+- Disabled state uses the solid `--color-text-disabled` token (no `opacity` filter), so screenshots are deterministic and the color is fully overridable.
 
 ## Don'ts
 

@@ -20,7 +20,8 @@ const tabClass = cn(
   "data-[selected]:text-text-primary data-[selected]:border-brand-primary",
   "data-[hovered]:text-text-primary",
   "data-[focus-visible]:ring-border-focus data-[focus-visible]:ring-2 data-[focus-visible]:ring-offset-2",
-  "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+  "data-[disabled]:text-text-disabled data-[disabled]:cursor-not-allowed",
+  "data-[disabled]:data-[hovered]:text-text-disabled data-[disabled]:data-[selected]:text-text-disabled data-[disabled]:data-[selected]:border-transparent",
 );
 const tabPanelClass = "outline-none";
 

@@ -8,7 +8,10 @@ const buttonStyles = cva(
     "inline-flex items-center justify-center font-semibold whitespace-nowrap select-none",
     "transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]",
     "focus-visible:ring-border-focus outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
-    "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+    "data-[disabled]:cursor-not-allowed",
+    "data-[disabled]:bg-bg-disabled data-[disabled]:text-text-disabled data-[disabled]:border-border-disabled",
+    "data-[disabled]:hover:bg-bg-disabled data-[disabled]:data-[pressed]:bg-bg-disabled",
+    "data-[disabled]:hover:border-border-disabled data-[disabled]:data-[pressed]:border-border-disabled",
     "data-[pending]:cursor-progress",
   ],
   {

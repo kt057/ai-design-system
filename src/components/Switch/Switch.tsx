@@ -5,7 +5,7 @@ import { cn } from "@/utils/cn";
 const wrapperClass = cn(
   "inline-flex items-center gap-2 select-none",
   "text-text-primary text-base",
-  "data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50",
+  "data-[disabled]:text-text-disabled data-[disabled]:cursor-not-allowed",
   "outline-none",
 );
 
@@ -14,6 +14,7 @@ const trackClass = cn(
   "rounded-pill h-5 w-9 p-0.5",
   "bg-border-strong transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]",
   "data-[selected]:bg-brand-primary",
+  "group-data-[disabled]:bg-border-disabled group-data-[disabled]:data-[selected]:bg-border-disabled",
   "group-data-[focus-visible]:ring-border-focus group-data-[focus-visible]:ring-2 group-data-[focus-visible]:ring-offset-2",
 );
 
