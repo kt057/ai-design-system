@@ -7,6 +7,23 @@ import * as projectAnnotations from "./preview";
 // Apply Storybook preview decorators / parameters to every browser-mode test.
 setProjectAnnotations([projectAnnotations]);
 
+// VRT-only font-rendering stabilization. Linux Chromium defaults to subpixel
+// (LCD) anti-aliasing, which produces per-channel pixel variance at glyph
+// edges and rounded borders between runs — enough to fail reg-suit's
+// thresholdRate: 0 even when nothing changed (e.g. Input/Disabled,
+// Link/Disabled). Forcing grayscale AA + geometric text rendering gives
+// byte-deterministic screenshots.
+const vrtStabilization = document.createElement("style");
+vrtStabilization.setAttribute("data-vrt", "font-rendering");
+vrtStabilization.textContent = `
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+  }
+`;
+document.head.appendChild(vrtStabilization);
+
 // After each story renders, capture a PNG via @storycap-testrun/browser.
 // Output path is configured in vitest.config.ts (`storycap.output.file`).
 afterEach(async (context) => {
