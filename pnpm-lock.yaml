@@ -31,8 +31,8 @@ importers:
         specifier: ^9.39.4
         version: 9.39.4
       '@figma/code-connect':
-        specifier: ^1.4.4
-        version: 1.4.4
+        specifier: ^1.4.7
+        version: 1.4.7
       '@storybook/addon-a11y':
         specifier: ^10.3.6
         version: 10.3.6(storybook@10.3.6(@testing-library/dom@10.4.1)(prettier@3.8.3)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))
@@ -761,8 +761,8 @@ packages:
       '@noble/hashes':
         optional: true
 
-  '@figma/code-connect@1.4.4':
-    resolution: {integrity: sha512-XgEel2frygcDxU6KhJKG1+qVGOKC9Ifz0iiWclfMkFU8aLvHN2VtewoeqKqchtwW4MNPcNcxYJl2FHQ4quYvQQ==}
+  '@figma/code-connect@1.4.7':
+    resolution: {integrity: sha512-iWolnm/X/LZVEvbt/D8AQ0IohnNskrTtDcdtGNEZKqUnBh+zDyQQ+m1HnM9+C00NveRbENfhs13QxrTYcOrvEA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -4464,11 +4464,6 @@ packages:
       eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
       typescript: '>=4.8.4 <6.1.0'
 
-  typescript@5.9.3:
-    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   typescript@6.0.3:
     resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
     engines: {node: '>=14.17'}
@@ -5697,7 +5692,7 @@ snapshots:
 
   '@exodus/bytes@1.15.0': {}
 
-  '@figma/code-connect@1.4.4':
+  '@figma/code-connect@1.4.7':
     dependencies:
       boxen: 5.1.1
       chalk: 4.1.2
@@ -5717,7 +5712,7 @@ snapshots:
       prompts: 2.4.2
       strip-ansi: 6.0.1
       ts-morph: 27.0.2
-      typescript: 5.9.3
+      typescript: 6.0.3
       undici: 7.25.0
       zod: 3.25.58
       zod-validation-error: 5.0.0(zod@3.25.58)
@@ -9758,8 +9753,6 @@ snapshots:
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
-
-  typescript@5.9.3: {}
 
   typescript@6.0.3: {}
 
